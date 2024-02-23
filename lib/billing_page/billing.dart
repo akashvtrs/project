@@ -167,7 +167,7 @@ class _BillingState extends State<Billing> {
                                         print(list_itemdiscount);
                                         print(list_itemnettotal);
                                         print(list_itemdiscountvaluecost);
-                                        print(list_itemtotalamount);
+                                    
 
                                         }
                                         isCheckeds = value!;
