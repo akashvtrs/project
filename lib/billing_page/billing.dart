@@ -1,19 +1,21 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print
 
+
 import 'package:final_project1/billing_page/additems.dart';
-import 'package:final_project1/billing_page/customer_details.dart';
 import 'package:flutter/material.dart';
 
 
-class Billing extends StatefulWidget {
-  final String itemname;
-  final String itemprice;
-  final String itemquantity;
-  final String itemdiscount;
 
-  final String itemdiscountvaluecost;
-  final String itemnettotal;
-  final String itemtotalamount;
+
+class Billing extends StatefulWidget {
+  final List itemname;
+  final List itemprice;
+  final List itemquantity;
+  final List itemdiscount;
+
+  final List itemdiscountvaluecost;
+  final List itemnettotal;
+  final List itemtotalamount;
 
   const Billing(
       this.itemname,
@@ -40,13 +42,13 @@ class _BillingState extends State<Billing> {
   bool bool_cont = false;
   Color? discountcontainercolor=Colors.blueAccent;
  
-  List list_itemname = [];
-  List list_itemquantity = [];
-  List list_itemprice = [];
-  List list_itemdiscount = [];
-  List list_itemnettotal = [];
-  List list_itemdiscountvaluecost = [];
-  List list_itemtotalamount = [];
+  List a_list_itemname = [];
+  List a_list_itemquantity = [];
+  List a_list_itemprice = [];
+  List a_list_itemdiscount = [];
+  List a_list_itemnettotal = [];
+  List a_list_itemdiscountvaluecost = [];
+  List a_list_itemtotalamount = [];
 
   additem_cl() {
     customername.add(customername_controller.text);
@@ -61,14 +63,16 @@ class _BillingState extends State<Billing> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CustomerRecords(customername, customerphone),
+          builder: (context) => AddItems(),
         ));
   }
+
+   
 
   @override
   void initState() {
     super.initState();
-    finalamount_controller.text = widget.itemtotalamount;
+   // finalamount_controller.text = widget.itemtotalamount;
   }
 
   @override
@@ -153,20 +157,20 @@ class _BillingState extends State<Billing> {
                                  if (value == true) {
                                     discountcontainercolor =
                                         Colors.lightGreen;
-                                        list_itemname.add(widget.itemname);
-                                        list_itemquantity.add(widget.itemquantity);
-                                        list_itemprice.add(widget.itemprice);
-                                        list_itemdiscount.add(widget.itemdiscount);
-                                        list_itemnettotal.add(widget.itemnettotal);
-                                        list_itemdiscountvaluecost.add(widget.itemdiscountvaluecost);
-                                        list_itemtotalamount.add(widget.itemtotalamount);
+                                        a_list_itemname.add(widget.itemname);
+                                        a_list_itemquantity.add(widget.itemquantity);
+                                        a_list_itemprice.add(widget.itemprice);
+                                        a_list_itemdiscount.add(widget.itemdiscount);
+                                        a_list_itemnettotal.add(widget.itemnettotal);
+                                        a_list_itemdiscountvaluecost.add(widget.itemdiscountvaluecost);
+                                        a_list_itemtotalamount.add(widget.itemtotalamount);
                                         
-                                        print(list_itemname);
-                                        print(list_itemquantity);
-                                        print(list_itemprice);
-                                        print(list_itemdiscount);
-                                        print(list_itemnettotal);
-                                        print(list_itemdiscountvaluecost);
+                                        print(a_list_itemname);
+                                        print(a_list_itemquantity);
+                                        print(a_list_itemprice);
+                                        print(a_list_itemdiscount);
+                                        print(a_list_itemnettotal);
+                                        print(a_list_itemdiscountvaluecost);
                                     
 
                                         }
@@ -174,20 +178,20 @@ class _BillingState extends State<Billing> {
                                         if (value == false) {
                                           discountcontainercolor =
                                         Colors.redAccent;
-                                        list_itemname.add(widget.itemname);
-                                        list_itemquantity.add(widget.itemquantity);
-                                        list_itemprice.add(widget.itemprice);
-                                        list_itemdiscount.add(widget.itemdiscount);
-                                        list_itemnettotal.add(widget.itemnettotal);
-                                        list_itemdiscountvaluecost.add(widget.itemdiscountvaluecost);
-                                        list_itemtotalamount.add(widget.itemtotalamount);
-                                        print(list_itemname);
-                                        print(list_itemquantity);
-                                        print(list_itemprice);
-                                        print(list_itemdiscount);
-                                        print(list_itemnettotal);
-                                        print(list_itemdiscountvaluecost);
-                                        print(list_itemtotalamount);
+                                        a_list_itemname.add(widget.itemname);
+                                        a_list_itemquantity.add(widget.itemquantity);
+                                        a_list_itemprice.add(widget.itemprice);
+                                        a_list_itemdiscount.add(widget.itemdiscount);
+                                        a_list_itemnettotal.add(widget.itemnettotal);
+                                        a_list_itemdiscountvaluecost.add(widget.itemdiscountvaluecost);
+                                        a_list_itemtotalamount.add(widget.itemtotalamount);
+                                        print(a_list_itemname);
+                                        print(a_list_itemquantity);
+                                        print(a_list_itemprice);
+                                        print(a_list_itemdiscount);
+                                        print(a_list_itemnettotal);
+                                        print(a_list_itemdiscountvaluecost);
+                                        print(a_list_itemtotalamount);
 
                                                                     }
                                  
@@ -214,7 +218,7 @@ class _BillingState extends State<Billing> {
                                         ],
                                       ),
                                     ),
-                                    Text(widget.itemname),
+                                   Text(widget.itemname[0]),
                                   ],
                                 ),
                                 Row(
@@ -230,7 +234,7 @@ class _BillingState extends State<Billing> {
                                         ],
                                       ),
                                     ),
-                                    Text(widget.itemquantity),
+                                  //  Text(widget.itemquantity),
                                   ],
                                 ),
                                 Row(
@@ -247,7 +251,7 @@ class _BillingState extends State<Billing> {
                                       ),
                                     ),
                                     Icon(Icons.currency_rupee, size: 15),
-                                    Text(widget.itemprice),
+                                   // Text(widget.itemprice),
                                   ],
                                 ),
                                 Row(
@@ -264,7 +268,7 @@ class _BillingState extends State<Billing> {
                                       ),
                                     ),
                                     Icon(Icons.currency_rupee, size: 15),
-                                    Text(widget.itemnettotal),
+                                   // Text(widget.itemnettotal),
                                   ],
                                 ),
                                 Row(
@@ -281,7 +285,7 @@ class _BillingState extends State<Billing> {
                                       ),
                                     ),
                                     Icon(Icons.currency_rupee, size: 15),
-                                    Text(widget.itemdiscountvaluecost),
+                                   // Text(widget.itemdiscountvaluecost),
                                   ],
                                 ),
                                 Row(
@@ -298,7 +302,7 @@ class _BillingState extends State<Billing> {
                                       ),
                                     ),
                                     Icon(Icons.currency_rupee, size: 15),
-                                    Text(widget.itemtotalamount),
+                                   // Text(widget.itemtotalamount),
                                   ],
                                 ),
                               ],
@@ -310,6 +314,18 @@ class _BillingState extends State<Billing> {
                   ),
                 ),
               ),
+         //   ListViewItems(
+         //     itemname: widget.itemname,
+         //     itemquantity: widget.itemquantity,
+         //     itemprice: widget.itemprice,
+         //     itemdiscount: widget.itemdiscount,
+         //     itemnettotal: widget.itemnettotal,
+         //     itemdiscountvaluecost: widget.itemdiscountvaluecost,
+         //     itemtotalamount: widget.itemtotalamount,
+         //     
+
+         //   )
+           //  ListItems(itemnames:[widget.itemname.toString()]),
               ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -382,13 +398,5 @@ class _BillingState extends State<Billing> {
       ),
     );
   }
-
-  Bill() {
-    Container(
-      height: 300,
-      width: 400,
-      color: Color.fromARGB(153, 0, 4, 255),
-      child: Text("fdafasfdsa"),
-    );
-  }
 }
+

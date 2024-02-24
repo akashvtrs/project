@@ -1,7 +1,9 @@
-// ignore_for_file: unused_import, depend_on_referenced_packages
+// ignore_for_file: unused_import, depend_on_referenced_packages, prefer_const_literals_to_create_immutables
 
 import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
+import 'package:final_project1/billing_page/customer_details.dart';
+import 'package:final_project1/home_screen/transaction_details.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
         
       ),
       debugShowCheckedModeBanner: false,
-      home: const AddItems(),
+      home:  const AddItems(),
     );
   }
 }

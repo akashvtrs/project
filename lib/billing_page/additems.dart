@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names, avoid_print
 
+
 import 'package:final_project1/billing_page/billing.dart';
+import 'package:final_project1/billing_page/listview_items.dart';
 import 'package:flutter/material.dart';
+
 
 
 class AddItems extends StatefulWidget {
@@ -22,6 +25,13 @@ class _AddItemsState extends State<AddItems> {
 
   String discountvaluecost = "0.00";
   String totalamount = "0.00";
+  List list_itemname = [];
+List list_itemquantity = [];
+List list_itemprice = [];
+List list_itemdiscount = [];
+List list_itemnettotal = [];
+List list_itemdiscountvaluecost = [];
+List list_itemtotalamount = [];
 
   @override
   void initState() {
@@ -63,34 +73,81 @@ class _AddItemsState extends State<AddItems> {
     });
   }
 
-  void saves() {
+  void save_item() {
     setState(() {
-      isVisible = true;
+      if (itemname_controller.text.isNotEmpty ) {
+        list_itemname.add(itemname_controller.text);
+list_itemquantity.add(quantity_controller.text);
+list_itemprice.add(price_controller.text);
+list_itemdiscount.add(discount_controllers.text);
+list_itemnettotal.add(nettotal);
+list_itemdiscountvaluecost.add(discountvaluecost);
+list_itemtotalamount.add(totalamount);
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => Billing(
-                  itemname_controller.text,
-                  quantity_controller.text,
-                  price_controller.text,
-                  discount_controllers.text,
-                  nettotal,
-                  discountvaluecost,
-                  totalamount)));
+                  list_itemname,
+                  list_itemquantity,
+                  list_itemprice,
+                  list_itemdiscount,
+                  list_itemnettotal,
+                  list_itemdiscountvaluecost,
+                  list_itemtotalamount)));
+      }
+      isVisible = true;
+      
+                  
     });
   }
 
   void clear() {
-    setState(() {
-      isVisible = false;
-    });
+ 
+   
+      Navigator.push(
+        context,MaterialPageRoute(builder: (context) => ListItems(
+
+          itemname_l:[list_itemname],
+          itemquantity_l:              list_itemquantity,
+          itemprice_l:                 list_itemprice,
+          itemdiscount_l:              list_itemdiscount,
+          itemnettotal_l:              list_itemnettotal,
+          itemdiscountvaluecost_l:     list_itemdiscountvaluecost,
+          itemtotalamount_l:           list_itemtotalamount,
+        )),
+      );
+  
   }
 
   void addnew() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => AddItems()),
-    );
+    list_itemname.add(itemname_controller.text);
+    list_itemquantity.add(quantity_controller.text);
+    list_itemprice.add(price_controller.text);
+    list_itemdiscount.add(discount_controllers.text);
+    list_itemnettotal.add(nettotal);
+    list_itemdiscountvaluecost.add(discountvaluecost);
+    list_itemtotalamount.add(totalamount);
+    print(list_itemname);
+    print(list_itemquantity);
+    print(list_itemprice);
+    print(list_itemdiscount);
+    print(list_itemnettotal);
+    print(list_itemdiscountvaluecost);
+    print(list_itemtotalamount);
+    
+    AddItems();
+    print("called");
+    setState(() {
+      itemname_controller.text = "";
+      quantity_controller.text = "";
+      price_controller.text = "";
+      discount_controllers.text = "";
+      nettotal = "0.00";
+      discountvaluecost = "0.00";
+      totalamount = "0.00";
+
+    });
+
   }
 
   @override
@@ -266,7 +323,7 @@ class _AddItemsState extends State<AddItems> {
                                 backgroundColor:
                                     const Color.fromARGB(255, 231, 234, 237),
                               ),
-                              onPressed: saves,
+                              onPressed: save_item,
                               child: Text("SAVE"),
                             ),
                             ElevatedButton(
