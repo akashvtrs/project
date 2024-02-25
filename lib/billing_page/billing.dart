@@ -61,7 +61,7 @@ int _selectedIndex = 0;
   List a_list_itemtotalamount = [];
   double totalDiscountForAllItems = 0.0;
   double totalNetTotalForAllItems = 0.0;
-  double totalAmountForAllItems = 0.0;
+  double totalAmountForAllItems = 0.00;
    List list_name_customername=[];
  List list_no_phoneno=[];
  List list_items_noofitems=[];
@@ -72,7 +72,7 @@ int _selectedIndex = 0;
     list_name_customername.add(customername_controller.text);
     list_no_phoneno.add(phoneno_controller.text);
     list_items_noofitems.add(widget.itemquantity.length.toString());
-    list_amount_totalamount.add(totalAmountForAllItems.toString());
+    list_amount_totalamount.add(totalAmountForAllItems.toStringAsFixed(2));
     list_bal_balance.add(balance);
     print(list_name_customername);
     print(list_no_phoneno);
@@ -341,7 +341,7 @@ widget.itemtotalamount.forEach((item) {
                       children: [
                       
                         Icon(Icons.currency_rupee, size: 15),
-                        Text(totalAmountForAllItems.toString()),
+                        Text(totalAmountForAllItems.toStringAsFixed(2)),
                       ],
                     ),
                   )
@@ -358,12 +358,12 @@ widget.itemtotalamount.forEach((item) {
                               setState(() {
                                 if (value == false) {
                                 paidamount_controller.text="0.00";  
-                                balance=totalAmountForAllItems.toString();
+                                balance=totalAmountForAllItems.toStringAsFixed(2);
                                 }
                                 
                                 if (value == true) {
-                                  paidamount_controller.text=totalAmountForAllItems.toString();
-                                 balance=((double.parse(totalAmountForAllItems.toString())-double.parse(paidamount_controller.text)).toString());
+                                  paidamount_controller.text=totalAmountForAllItems.toStringAsFixed(2);
+                                 balance=((double.parse(totalAmountForAllItems.toStringAsFixed(2))-double.parse(paidamount_controller.text)).toStringAsFixed(2));
                                 }
                                
                                 isCheckeds = value!;
@@ -378,7 +378,7 @@ widget.itemtotalamount.forEach((item) {
                       onChanged: (value) => {
                         setState(() {
                           if (paidamount_controller.text.isNotEmpty) {
-                            balance = ((double.parse(totalAmountForAllItems.toString()) - double.parse(paidamount_controller.text)).toString());
+                            balance = ((double.parse(totalAmountForAllItems.toStringAsFixed(2)) - double.parse(paidamount_controller.text)).toStringAsFixed(2));
                           }
                           
                         })
@@ -470,7 +470,7 @@ widget.itemtotalamount.forEach((item) {
     list_name_customername.add(customername_controller.text);
     list_no_phoneno.add(phoneno_controller.text);
     list_items_noofitems.add(widget.itemquantity.length.toString());
-    list_amount_totalamount.add(totalAmountForAllItems.toString());
+    list_amount_totalamount.add(totalAmountForAllItems.toStringAsFixed(2));
     list_bal_balance.add(balance);
     
 
@@ -495,9 +495,9 @@ widget.itemtotalamount.forEach((item) {
     print(widget.itemdiscountvaluecost);
     widget.itemtotalamount.clear();
     print(widget.itemtotalamount);
-    totalAmountForAllItems = 0.0;
-    totalDiscountForAllItems = 0.0;
-    totalNetTotalForAllItems = 0.0;
+    totalAmountForAllItems = 0.00;
+    totalDiscountForAllItems = 0.00;
+    totalNetTotalForAllItems = 0.00;
     balance = "0.00";
     customername_controller.text="";
     phoneno_controller.text="";

@@ -104,14 +104,16 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.currency_rupee, size: 15),
-                        Text("Total Amount: ${widget.amount_totalamount[index]}"),
+                        
+                        Text("Total Amount:"),Icon(Icons.currency_rupee, size: 15),
+                        Text(widget.amount_totalamount[index])
                       ],
                     ),
                    Row(
                      children: [
-                      Icon(Icons.currency_rupee, size: 15),
-                       Text("Balance: ${widget.bal_balance[index]}"),
+                      
+                       Text("Balance:"),Icon(Icons.currency_rupee, size: 15),
+                       Text(widget.bal_balance[index])
                      ],
                    ),],
                 ),
