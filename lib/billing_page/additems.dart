@@ -132,7 +132,7 @@ void _onItemTapped(int index) {
                   list_itemdiscount,
                   list_itemnettotal,
                   list_itemdiscountvaluecost,
-                  list_itemtotalamount)));
+                  list_itemtotalamount,name_owner: "",name_business: "",)));
                   
     });
   }

@@ -10,9 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Identities extends StatefulWidget {
-  String name;
-  String Businessname;
-  Identities(this.name, this.Businessname,{super.key});
+  final String name_owner;
+  final String name_Business;
+  const Identities({super.key,required this.name_owner, required this.name_Business});
 
   @override
   State<Identities> createState() => _IdentitiesState();
@@ -25,7 +25,7 @@ class _IdentitiesState extends State<Identities> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        backgroundColor: Colors.cyanAccent,
+        
         leading: IconButton(
             onPressed: () {
               Navigator.pop(
@@ -38,13 +38,16 @@ class _IdentitiesState extends State<Identities> {
         title: Column(
           
           children: [
-            Align(
-              alignment: Alignment.centerLeft
-              ,child: Text(widget.Businessname)),
-            Align(
-              alignment: Alignment.centerRight
-              ,child: Text("--${widget.name}")),
-            Center(child: Text("Customer Payments")),
+            Center(
+              child: Text(widget.name_Business,style: TextStyle(
+                fontSize:50,
+                color: Colors.red
+              ),),
+            ),
+            Center(
+              child: Text("--${widget.name_owner}",style: TextStyle(
+                color: Colors.blue)),
+            ),
           ],
         ),
         
@@ -58,7 +61,7 @@ class _IdentitiesState extends State<Identities> {
               context,
               MaterialPageRoute(
                 builder: (context) => Billing(
-                   [],[],[],[],[],[],[]
+                   [],[],[],[],[],[],[],name_owner:widget.name_owner,name_business:widget.name_Business,
                 ),
               ));
         },

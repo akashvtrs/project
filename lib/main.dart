@@ -2,7 +2,6 @@
 
 import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
-import 'package:final_project1/billing_page/customer_details.dart';
 import 'package:final_project1/business_profile/details.dart';
 import 'package:final_project1/home_screen/apphomescreen.dart';
 import 'package:flutter/material.dart';

@@ -20,6 +20,8 @@ class Billing extends StatefulWidget {
   final List itemdiscountvaluecost;
   final List itemnettotal;
   final List itemtotalamount;
+  final String name_owner;
+  final String name_business;
 
   const Billing(
       this.itemname,
@@ -29,7 +31,7 @@ class Billing extends StatefulWidget {
       this.itemnettotal,
       this.itemdiscountvaluecost,
       this.itemtotalamount,
-      {super.key});
+      {super.key, required this.name_business, required this.name_owner});
 
   @override
   State<Billing> createState() => _BillingState();
@@ -61,7 +63,13 @@ int _selectedIndex = 0;
   double totalNetTotalForAllItems = 0.0;
   double totalAmountForAllItems = 0.0;
   String balance = "0.00";
-  
+   void save_customer() {
+    print(widget.name_owner);
+    print(widget.name_business);
+    Navigator.push(
+       context,MaterialPageRoute(builder: (context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business)));
+    
+  }
   additem_cl() {
     customername.add(customername_controller.text);
     customerphone.add(phoneno_controller.text);
@@ -93,7 +101,7 @@ void _onItemTapped(int index) {
   setState(() {
     _selectedIndex = index;
     if (index == 0) {
-      Navigator.pop(context);
+      Navigator.pop(context,MaterialPageRoute(builder: (context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business,)));
     }
     if (index==1) {
       setState(() {
@@ -443,14 +451,10 @@ widget.itemtotalamount.forEach((item) {
 
   void add_customer() {
     Navigator.push(
-       context,MaterialPageRoute(builder: (context) => Identities("","")));
+       context,MaterialPageRoute(builder: (context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business)));
     
   }
   
-  void save_customer() {
-    Navigator.push(
-       context,MaterialPageRoute(builder: (context) => AppHomeScreen()));
-    
-  }
+ 
 }
 

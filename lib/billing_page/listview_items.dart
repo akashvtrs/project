@@ -180,7 +180,9 @@ class _ListItemsState extends State<ListItems> {
                       widget.itemdiscount_l,
                       widget.itemnettotal_l,
                       widget.itemdiscountvaluecost_l,
-                      widget.itemtotalamount_l)
+                      widget.itemtotalamount_l,
+                      name_owner: "",
+                      name_business: "",)
                       ));}
                                     );
                                   }, child: Text("delete")),
