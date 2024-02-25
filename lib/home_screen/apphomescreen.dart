@@ -87,7 +87,40 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
     return 
     Scaffold(
       backgroundColor: Colors.red,
-      body: Text("User Name"),
+      body: ListView.builder(
+        itemCount: widget.name_customername.length,
+        itemBuilder: (context, index) {
+          
+          return Card(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Customer Name: ${widget.name_customername[index]}"),
+                Text("Phone No: ${widget.no_phoneno[index]}"),
+                Text("Purchased No. of Items: ${widget.items_noofitems[index]}"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.currency_rupee, size: 15),
+                        Text("Total Amount: ${widget.amount_totalamount[index]}"),
+                      ],
+                    ),
+                   Row(
+                     children: [
+                      Icon(Icons.currency_rupee, size: 15),
+                       Text("Balance: ${widget.bal_balance[index]}"),
+                     ],
+                   ),],
+                ),
+               
+              ],
+            ),
+          );
+        }
+      ),
     );
   }
 }
