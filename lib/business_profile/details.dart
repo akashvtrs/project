@@ -139,7 +139,12 @@ class _DetailsState extends State<Details> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  Identities(name_owner:Owner_Name, name_Business: Business_Name),
+                                  Identities(name_owner:Owner_Name, name_Business: Business_Name,
+name_customername:[],
+no_phoneno:[],
+items_noofitems:[],
+amount_totalamount:[],
+bal_balance:[]),
                             ));
                       },
                       icon: Icon(Icons.send)),

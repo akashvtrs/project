@@ -1,18 +1,20 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, non_constant_identifier_names, unused_import, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, must_be_immutable, non_constant_identifier_names, unused_import, prefer_const_literals_to_create_immutables, avoid_web_libraries_in_flutter
 
 import 'dart:js_util';
-
 import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
 import 'package:final_project1/business_profile/details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Identities extends StatefulWidget {
   final String name_owner;
   final String name_Business;
-  const Identities({super.key,required this.name_owner, required this.name_Business});
+  final List name_customername;
+  final List no_phoneno;
+  final List items_noofitems;
+  final List amount_totalamount;
+  final List bal_balance;
+  const Identities({super.key,required this.name_owner, required this.name_Business,required this.name_customername,required this.no_phoneno,required this.items_noofitems,required this.amount_totalamount,required this.bal_balance});
 
   @override
   State<Identities> createState() => _IdentitiesState();
@@ -26,15 +28,7 @@ class _IdentitiesState extends State<Identities> {
       appBar: AppBar(
         toolbarHeight: 100,
         
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Details(),
-                  ));
-            },
-            icon: Icon(CupertinoIcons.profile_circled)),
+        
         title: Column(
           
           children: [
@@ -52,7 +46,9 @@ class _IdentitiesState extends State<Identities> {
         ),
         
       ),
-  body: AppHomeScreen(),
+  body: AppHomeScreen(
+    name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
+  ),
      
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
@@ -74,7 +70,12 @@ class _IdentitiesState extends State<Identities> {
 }
 
 class AppHomeScreen extends StatefulWidget {
-  const AppHomeScreen({super.key});
+  final List name_customername;
+  final List no_phoneno;
+  final List items_noofitems;
+  final List amount_totalamount;
+  final List bal_balance;
+  const AppHomeScreen({super.key,required this.name_customername,required this.no_phoneno,required this.items_noofitems,required this.amount_totalamount,required this.bal_balance});
 
   @override
   State<AppHomeScreen> createState() => _AppHomeScreenState();

@@ -1,11 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
-import 'dart:html';
 
 import 'package:final_project1/billing_page/billing.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 
 class ListItems extends StatefulWidget {
@@ -164,7 +161,7 @@ class _ListItemsState extends State<ListItems> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  ElevatedButton(onPressed: (){
+                                  ElevatedButton(onPressed:(){
                                     setState(() {
                                       widget.itemname_l.remove(widget.itemname_l[index]);
                                       widget.itemdiscount_l.remove(widget.itemdiscount_l[index]);

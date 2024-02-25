@@ -4,9 +4,8 @@
 import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/listview_items.dart';
 import 'package:final_project1/home_screen/apphomescreen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 
 
@@ -22,6 +21,7 @@ class Billing extends StatefulWidget {
   final List itemtotalamount;
   final String name_owner;
   final String name_business;
+
 
   const Billing(
       this.itemname,
@@ -62,12 +62,33 @@ int _selectedIndex = 0;
   double totalDiscountForAllItems = 0.0;
   double totalNetTotalForAllItems = 0.0;
   double totalAmountForAllItems = 0.0;
+   List list_name_customername=[];
+ List list_no_phoneno=[];
+ List list_items_noofitems=[];
+ List list_amount_totalamount=[];
+ List list_bal_balance=[];
   String balance = "0.00";
    void save_customer() {
-    print(widget.name_owner);
-    print(widget.name_business);
+    list_name_customername.add(customername_controller.text);
+    list_no_phoneno.add(phoneno_controller.text);
+    list_items_noofitems.add(widget.itemquantity.length.toString());
+    list_amount_totalamount.add(totalAmountForAllItems.toString());
+    list_bal_balance.add(balance);
+    print(list_name_customername);
+    print(list_no_phoneno);
+    print(list_items_noofitems);
+    print(list_amount_totalamount);
+    print(list_bal_balance);
+    
     Navigator.push(
-       context,MaterialPageRoute(builder: (context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business)));
+       context,MaterialPageRoute(builder:(context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business,
+        name_customername:list_name_customername,
+no_phoneno:list_no_phoneno,
+
+items_noofitems:list_items_noofitems,
+amount_totalamount:list_amount_totalamount,
+bal_balance:list_bal_balance
+       )));
     
   }
   additem_cl() {
@@ -101,7 +122,15 @@ void _onItemTapped(int index) {
   setState(() {
     _selectedIndex = index;
     if (index == 0) {
-      Navigator.pop(context,MaterialPageRoute(builder: (context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business,)));
+       Navigator.push(
+       context,MaterialPageRoute(builder:(context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business,
+        name_customername:list_name_customername,
+no_phoneno:list_no_phoneno,
+
+items_noofitems:list_items_noofitems,
+amount_totalamount:list_amount_totalamount,
+bal_balance:list_bal_balance
+       )));
     }
     if (index==1) {
       setState(() {
@@ -111,7 +140,7 @@ void _onItemTapped(int index) {
     }
     if (index==2) {
       setState(() {
-        //addnew_customer();
+        addnew_customer();
       });
       
       
@@ -406,9 +435,7 @@ widget.itemtotalamount.forEach((item) {
                           ))),
                 ),
               ),
-              ElevatedButton(onPressed: add_customer, child: Text("save")),
-              ElevatedButton(
-                  onPressed: show, child: Text("show_customer_detail")),
+             
             ],
           ),
         ),
@@ -439,6 +466,52 @@ widget.itemtotalamount.forEach((item) {
     );
   }
   
+  void addnew_customer() {
+    list_name_customername.add(customername_controller.text);
+    list_no_phoneno.add(phoneno_controller.text);
+    list_items_noofitems.add(widget.itemquantity.length.toString());
+    list_amount_totalamount.add(totalAmountForAllItems.toString());
+    list_bal_balance.add(balance);
+    
+
+   
+    print(list_name_customername);
+    print(list_no_phoneno);
+    print(list_items_noofitems);
+    print(list_amount_totalamount);
+    print(list_bal_balance);
+    setState(() {
+    widget.itemname.clear();
+    print(widget.itemname);
+    widget.itemquantity.clear();
+    print(widget.itemquantity);
+    widget.itemprice.clear();
+    print(widget.itemprice);
+    widget.itemdiscount.clear();
+    print(widget.itemdiscount);
+    widget.itemnettotal.clear();
+    print(widget.itemnettotal);
+    widget.itemdiscountvaluecost.clear();
+    print(widget.itemdiscountvaluecost);
+    widget.itemtotalamount.clear();
+    print(widget.itemtotalamount);
+    totalAmountForAllItems = 0.0;
+    totalDiscountForAllItems = 0.0;
+    totalNetTotalForAllItems = 0.0;
+    balance = "0.00";
+    customername_controller.text="";
+    phoneno_controller.text="";
+    description_controller.text="";
+    paidamount_controller.text="0.00";
+
+
+    
+
+      
+  
+    });
+  }
+  
   
 
 //    double sum = 0.0;
@@ -448,13 +521,6 @@ widget.itemtotalamount.forEach((item) {
 //  //Text(sum.toStringAsFixed(2));
 //  print('Total sum:${sum.toStringAsFixed(2)}');
 //  }
-
-  void add_customer() {
-    Navigator.push(
-       context,MaterialPageRoute(builder: (context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business)));
-    
-  }
-  
  
 }
 
