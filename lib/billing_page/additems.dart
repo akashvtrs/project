@@ -1,14 +1,20 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names, avoid_print
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names, avoid_print, must_be_immutable
 
 
 import 'package:final_project1/billing_page/billing.dart';
-import 'package:final_project1/billing_page/listview_items.dart';
 import 'package:flutter/material.dart';
 
 
 
 class AddItems extends StatefulWidget {
-  const AddItems({super.key});
+List add_items_list_itemname = [];
+List add_items_list_itemquantity = [];
+List add_items_list_itemprice = [];
+List add_items_list_itemdiscount = [];
+List add_items_list_itemnettotal = [];
+List add_items_list_itemdiscountvaluecost = [];
+List add_items_list_itemtotalamount = [];
+   AddItems(this.add_items_list_itemname,this.add_items_list_itemquantity,this.add_items_list_itemprice,this.add_items_list_itemdiscount,this.add_items_list_itemnettotal,this.add_items_list_itemdiscountvaluecost,this.add_items_list_itemtotalamount,{super.key});
 
   @override
   State<AddItems> createState() => _AddItemsState();
@@ -37,6 +43,17 @@ List list_itemtotalamount = [];
   void initState() {
     super.initState();
     save_item_details();
+    list_itemname=widget.add_items_list_itemname;
+    list_itemquantity=widget.add_items_list_itemquantity;
+    list_itemprice=widget.add_items_list_itemprice;
+    list_itemdiscount=widget.add_items_list_itemdiscount;
+    list_itemnettotal=widget.add_items_list_itemnettotal;
+    list_itemdiscountvaluecost=widget.add_items_list_itemdiscountvaluecost;
+    list_itemtotalamount=widget.add_items_list_itemtotalamount;
+    
+    
+    
+    
   }
 
   void save_item_details() {
@@ -73,16 +90,16 @@ List list_itemtotalamount = [];
     });
   }
 
-  void save_item() {
+  void saves() {
     setState(() {
-      if (itemname_controller.text.isNotEmpty ) {
-        list_itemname.add(itemname_controller.text);
-list_itemquantity.add(quantity_controller.text);
-list_itemprice.add(price_controller.text);
-list_itemdiscount.add(discount_controllers.text);
-list_itemnettotal.add(nettotal);
-list_itemdiscountvaluecost.add(discountvaluecost);
-list_itemtotalamount.add(totalamount);
+      isVisible = true;
+      list_itemname.add(itemname_controller.text);
+    list_itemquantity.add(quantity_controller.text);
+    list_itemprice.add(price_controller.text);
+    list_itemdiscount.add(discount_controllers.text);
+    list_itemnettotal.add(nettotal);
+    list_itemdiscountvaluecost.add(discountvaluecost);
+    list_itemtotalamount.add(totalamount);
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -94,30 +111,27 @@ list_itemtotalamount.add(totalamount);
                   list_itemnettotal,
                   list_itemdiscountvaluecost,
                   list_itemtotalamount)));
-      }
-      isVisible = true;
-      
                   
     });
   }
 
-  void clear() {
- 
-   
-      Navigator.push(
-        context,MaterialPageRoute(builder: (context) => ListItems(
-
-          itemname_l:[list_itemname],
-          itemquantity_l:              list_itemquantity,
-          itemprice_l:                 list_itemprice,
-          itemdiscount_l:              list_itemdiscount,
-          itemnettotal_l:              list_itemnettotal,
-          itemdiscountvaluecost_l:     list_itemdiscountvaluecost,
-          itemtotalamount_l:           list_itemtotalamount,
-        )),
-      );
-  
-  }
+ // void clear() {
+ //
+ //  
+ //     Navigator.push(
+ //       context,MaterialPageRoute(builder: (context) => ListItems(
+//
+ //         itemname_l:list_itemname,
+ //         itemquantity_l:              list_itemquantity,
+ //         itemprice_l:                 list_itemprice,
+ //         itemdiscount_l:              list_itemdiscount,
+ //         itemnettotal_l:              list_itemnettotal,
+ //         itemdiscountvaluecost_l:     list_itemdiscountvaluecost,
+ //         itemtotalamount_l:           list_itemtotalamount,
+ //       )),
+ //     );
+ // 
+ // }
 
   void addnew() {
     list_itemname.add(itemname_controller.text);
@@ -135,7 +149,15 @@ list_itemtotalamount.add(totalamount);
     print(list_itemdiscountvaluecost);
     print(list_itemtotalamount);
     
-    AddItems();
+    AddItems(
+      list_itemname,
+list_itemquantity,
+list_itemprice,
+list_itemdiscount,
+list_itemnettotal,
+list_itemdiscountvaluecost,
+list_itemtotalamount,
+    );
     print("called");
     setState(() {
       itemname_controller.text = "";
@@ -323,24 +345,24 @@ list_itemtotalamount.add(totalamount);
                                 backgroundColor:
                                     const Color.fromARGB(255, 231, 234, 237),
                               ),
-                              onPressed: save_item,
-                              child: Text("SAVE"),
+                              onPressed: saves,
+                              child: Text("Save"),
                             ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 227, 233, 238),
-                              ),
-                              onPressed: clear,
-                              child: Text("clear"),
-                            ),
+                          // ElevatedButton(
+                          //   style: ElevatedButton.styleFrom(
+                          //     backgroundColor:
+                          //         const Color.fromARGB(255, 227, 233, 238),
+                          //   ),
+                          //   onPressed: clear,
+                          //   child: Text("clear"),
+                          // ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     const Color.fromARGB(255, 208, 222, 233),
                               ),
                               onPressed: addnew,
-                              child: Text("SAVE & NEW SALE"),
+                              child: Text("Save & Add  New Item"),
                             )
                           ],
                         ),

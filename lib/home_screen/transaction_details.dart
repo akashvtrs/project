@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, non_constant_identifier_names, unused_import
+// ignore_for_file: prefer_const_constructors, must_be_immutable, non_constant_identifier_names, unused_import, prefer_const_literals_to_create_immutables
 
 import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/business_profile/details.dart';
@@ -35,7 +35,9 @@ class _TransactionDetailsState extends State<TransactionDetails> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => AddItems(),
+                builder: (context) => AddItems(
+                   [],[],[],[],[],[],[]
+                ),
               ));
         },
         child: Icon(Icons.add),

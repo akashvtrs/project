@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
         
       ),
       debugShowCheckedModeBanner: false,
-      home:  const AddItems(),
+      home:   AddItems(
+        [],[],[],[],[],[],[]
+      ),
     );
   }
 }

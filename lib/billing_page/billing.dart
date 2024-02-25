@@ -1,8 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, avoid_function_literals_in_foreach_calls
 
 
 import 'package:final_project1/billing_page/additems.dart';
+import 'package:final_project1/billing_page/listview_items.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 
 
@@ -34,13 +37,16 @@ class Billing extends StatefulWidget {
 class _BillingState extends State<Billing> {
   TextEditingController customername_controller = TextEditingController();
   TextEditingController price_controller = TextEditingController();
-  TextEditingController finalamount_controller = TextEditingController();
+  TextEditingController paidamount_controller = TextEditingController();
+
   final customername = <String>[]; // Creates growable list.
   final customerphone = <String>[];
   final map = {};
   bool isCheckeds = false;
-  bool bool_cont = false;
+  bool bool_cont = true;
+  bool bool_noitemsincart = false;
   Color? discountcontainercolor=Colors.blueAccent;
+
  
   List a_list_itemname = [];
   List a_list_itemquantity = [];
@@ -49,30 +55,62 @@ class _BillingState extends State<Billing> {
   List a_list_itemnettotal = [];
   List a_list_itemdiscountvaluecost = [];
   List a_list_itemtotalamount = [];
-
+  double totalDiscountForAllItems = 0.0;
+  double totalNetTotalForAllItems = 0.0;
+  double totalAmountForAllItems = 0.0;
+  String balance = "0.00";
+  
   additem_cl() {
     customername.add(customername_controller.text);
     customerphone.add(price_controller.text);
     print(customername);
     print(customerphone);
-    Navigator.pop(
-        context, MaterialPageRoute(builder: (context) => AddItems()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => AddItems(
+          widget.itemname,
+       widget.itemquantity,
+       widget.itemprice,
+       widget.itemdiscount,
+       widget.itemnettotal,
+widget.itemdiscountvaluecost,
+      widget.itemtotalamount,
+        )));
   }
 
   show() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AddItems(),
-        ));
-  }
+   // Navigator.push(
+   //     context,
+   //     MaterialPageRoute(
+   //       builder: (context) => AddItems(),
+   //     ));
+        print(widget.itemdiscountvaluecost);
+        
+       
+}
 
    
+
 
   @override
   void initState() {
     super.initState();
    // finalamount_controller.text = widget.itemtotalamount;
+   widget.itemdiscountvaluecost.forEach((item) {
+                        totalDiscountForAllItems += double.parse(item);
+                      });
+                      print(totalDiscountForAllItems);
+   widget.itemnettotal.forEach((item) {
+  totalNetTotalForAllItems += double.parse(item);
+});
+widget.itemtotalamount.forEach((item) {
+  totalAmountForAllItems += double.parse(item);
+});
+
+  paidamount_controller.text="0.00";       
+   balance = totalAmountForAllItems.toStringAsFixed(2);       
+   if (widget.itemname.isEmpty) {
+     bool_noitemsincart=!bool_noitemsincart;
+   }     
   }
 
   @override
@@ -117,6 +155,7 @@ class _BillingState extends State<Billing> {
                       }
                       
                       
+                      
                     });
                   },
                   child: Container(
@@ -126,7 +165,7 @@ class _BillingState extends State<Billing> {
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
                     height: 40,
-                    width: 400,
+                    width: double.infinity,
                     child: Row(
                       children: [
                         Icon(Icons.arrow_drop_down_circle_outlined,
@@ -139,193 +178,85 @@ class _BillingState extends State<Billing> {
               ),
               Visibility(
                 visible: bool_cont,
-                child: Container(
-                  height: 300,
-                  width: 400,
-                  color: Colors.blueAccent,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Checkbox(
-                              value: isCheckeds,
-                              
-                              onChanged: (bool? value) {
-                                
-                                setState(() {
-                                  
-                                 if (value == true) {
-                                    discountcontainercolor =
-                                        Colors.lightGreen;
-                                        a_list_itemname.add(widget.itemname);
-                                        a_list_itemquantity.add(widget.itemquantity);
-                                        a_list_itemprice.add(widget.itemprice);
-                                        a_list_itemdiscount.add(widget.itemdiscount);
-                                        a_list_itemnettotal.add(widget.itemnettotal);
-                                        a_list_itemdiscountvaluecost.add(widget.itemdiscountvaluecost);
-                                        a_list_itemtotalamount.add(widget.itemtotalamount);
-                                        
-                                        print(a_list_itemname);
-                                        print(a_list_itemquantity);
-                                        print(a_list_itemprice);
-                                        print(a_list_itemdiscount);
-                                        print(a_list_itemnettotal);
-                                        print(a_list_itemdiscountvaluecost);
-                                    
-
-                                        }
-                                        isCheckeds = value!;
-                                        if (value == false) {
-                                          discountcontainercolor =
-                                        Colors.redAccent;
-                                        a_list_itemname.add(widget.itemname);
-                                        a_list_itemquantity.add(widget.itemquantity);
-                                        a_list_itemprice.add(widget.itemprice);
-                                        a_list_itemdiscount.add(widget.itemdiscount);
-                                        a_list_itemnettotal.add(widget.itemnettotal);
-                                        a_list_itemdiscountvaluecost.add(widget.itemdiscountvaluecost);
-                                        a_list_itemtotalamount.add(widget.itemtotalamount);
-                                        print(a_list_itemname);
-                                        print(a_list_itemquantity);
-                                        print(a_list_itemprice);
-                                        print(a_list_itemdiscount);
-                                        print(a_list_itemnettotal);
-                                        print(a_list_itemdiscountvaluecost);
-                                        print(a_list_itemtotalamount);
-
-                                                                    }
-                                 
-                                   
-                                });
-                              }),
-                          Container(
-                            width: 350,
-                            color: discountcontainercolor,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 250,
-                                      
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Item Name"),
-                                          Text(":"),
-                                          
-                                        ],
-                                      ),
-                                    ),
-                                   Text(widget.itemname[0]),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 250,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Quantity"),
-                                          Text(":"),
-                                        ],
-                                      ),
-                                    ),
-                                  //  Text(widget.itemquantity),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 250,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Price"),
-                                          Text(":"),
-                                        ],
-                                      ),
-                                    ),
-                                    Icon(Icons.currency_rupee, size: 15),
-                                   // Text(widget.itemprice),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 250,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Text("cost"),
-                                          Text(":"),
-                                        ],
-                                      ),
-                                    ),
-                                    Icon(Icons.currency_rupee, size: 15),
-                                   // Text(widget.itemnettotal),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 250,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Discount(${widget.itemdiscount}%)"),
-                                          Text(":"),
-                                        ],
-                                      ),
-                                    ),
-                                    Icon(Icons.currency_rupee, size: 15),
-                                   // Text(widget.itemdiscountvaluecost),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 250,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Total Amount"),
-                                          Text("="),
-                                        ],
-                                      ),
-                                    ),
-                                    Icon(Icons.currency_rupee, size: 15),
-                                   // Text(widget.itemtotalamount),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                child: Column(
+                  children: [
+                    
+                    Padding(
+                      padding: const EdgeInsets.only(bottom :8.0),
+                      child: Visibility(
+                        visible: bool_noitemsincart,
+                        child: Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 209, 227, 14).withOpacity(0.5),
+                          border: Border.all(),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        ),
+                        height: 20,
+                        width: double.infinity,
+                        child: Center(child: Text("NO Items In Cart")),
+                                          ),
                       ),
-                    ],
-                  ),
+                    ),
+                    
+
+                    ListItems(
+                          itemname_l:widget.itemname,
+                    itemquantity_l:         widget.itemquantity,
+                    itemprice_l:            widget.itemprice,
+                    itemdiscount_l:         widget.itemdiscount,
+                    itemnettotal_l:         widget.itemnettotal,
+                    itemdiscountvaluecost_l:widget.itemdiscountvaluecost,
+                    itemtotalamount_l:      widget.itemtotalamount,
+                        ),
+                  ],
                 ),
               ),
-         //   ListViewItems(
-         //     itemname: widget.itemname,
-         //     itemquantity: widget.itemquantity,
-         //     itemprice: widget.itemprice,
-         //     itemdiscount: widget.itemdiscount,
-         //     itemnettotal: widget.itemnettotal,
-         //     itemdiscountvaluecost: widget.itemdiscountvaluecost,
-         //     itemtotalamount: widget.itemtotalamount,
-         //     
+        //   ListViewItems(
+        //     itemname: widget.itemname,
+        //     itemquantity: widget.itemquantity,
+        //     itemprice: widget.itemprice,
+        //     itemdiscount: widget.itemdiscount,
+        //     itemnettotal: widget.itemnettotal,
+        //     itemdiscountvaluecost: widget.itemdiscountvaluecost,
+        //     itemtotalamount: widget.itemtotalamount,
+        //     
 
-         //   )
-           //  ListItems(itemnames:[widget.itemname.toString()]),
+        //   )
+        // ListItems(itemnames:[widget.itemname.toString()]),
+           Padding(
+             padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
+             child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),color: Colors.pink,
+              ),
+              width: double.infinity,
+              height: 100,
+              
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Text("No.of Items:"),
+                      Text(widget.itemquantity.length.toString()),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text("Total discount amount:"),
+                      Text(totalDiscountForAllItems.toString()),
+                    ]
+                  ),
+                  Row(
+                    children: [
+                      Text("Total net amount:"),
+                      Text(totalNetTotalForAllItems.toString()),
+                    ]
+                  )
+                  
+                ],
+              )),
+           ),
               ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -338,13 +269,20 @@ class _BillingState extends State<Billing> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Total Amount"),
-                  SizedBox(
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+
+                    ),
                     width: 100,
-                    child: TextField(
-                      controller: finalamount_controller,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.currency_rupee),
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                      
+                        Icon(Icons.currency_rupee, size: 15),
+                        Text(totalAmountForAllItems.toString()),
+                      ],
                     ),
                   )
                 ],
@@ -356,12 +294,20 @@ class _BillingState extends State<Billing> {
                     children: [
                       Checkbox(
                           value: isCheckeds,
-                          onChanged: (bool? value) {
-                            if (value == true) {
+                          onChanged: (bool? value) {                            
                               setState(() {
+                                if (value == false) {
+                                paidamount_controller.text="0.00";  
+                                balance=totalAmountForAllItems.toString();
+                                }
+                                
+                                if (value == true) {
+                                  paidamount_controller.text=totalAmountForAllItems.toString();
+                                 balance=((double.parse(totalAmountForAllItems.toString())-double.parse(paidamount_controller.text)).toString());
+                                }
+                               
                                 isCheckeds = value!;
-                              });
-                            }
+                              });                 
                           }),
                       Text("Received"),
                     ],
@@ -369,6 +315,15 @@ class _BillingState extends State<Billing> {
                   SizedBox(
                     width: 100,
                     child: TextField(
+                      onChanged: (value) => {
+                        setState(() {
+                          if (paidamount_controller.text.isNotEmpty) {
+                            balance = ((double.parse(totalAmountForAllItems.toString()) - double.parse(paidamount_controller.text)).toString());
+                          }
+                          
+                        })
+                      },
+                      controller: paidamount_controller,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.currency_rupee),
                       ),
@@ -376,14 +331,49 @@ class _BillingState extends State<Billing> {
                   )
                 ],
               ),
+              Divider(
+                color: Colors.black,
+
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                        decoration: BoxDecoration(
+                          
+                          border: Border.all(),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  
+                        ),
+                        width: 100,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                          
+                            Icon(Icons.currency_rupee, size: 15),
+                            Text(balance),
+                          ],
+                        ),
+                      ),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                child: TextField(
-                    decoration: InputDecoration(
-                        labelText: "description",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        ))),
+                child: SizedBox(
+                  width: 300,
+                  child: TextField(
+                   
+                    maxLines: null,
+
+                    
+                      decoration: InputDecoration( 
+                        
+                        contentPadding: EdgeInsets.symmetric(vertical: 8.0),
+                          labelText: "description",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                          ))),
+                ),
               ),
               ElevatedButton(onPressed: additem_cl, child: Text("add")),
               ElevatedButton(
@@ -398,5 +388,14 @@ class _BillingState extends State<Billing> {
       ),
     );
   }
-}
+  
+  
 
+//    double sum = 0.0;
+//  widget.itemdiscountvaluecost.forEach((item) {
+//    sum += double.parse(item);
+//  });
+//  //Text(sum.toStringAsFixed(2));
+//  print('Total sum:${sum.toStringAsFixed(2)}');
+//  }
+}
