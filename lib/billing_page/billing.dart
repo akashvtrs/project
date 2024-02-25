@@ -3,6 +3,7 @@
 
 import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/listview_items.dart';
+import 'package:final_project1/home_screen/apphomescreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,11 +12,11 @@ import 'package:flutter/widgets.dart';
 
 
 class Billing extends StatefulWidget {
-  final List itemname;
+
   final List itemprice;
   final List itemquantity;
   final List itemdiscount;
-
+  final List itemname;
   final List itemdiscountvaluecost;
   final List itemnettotal;
   final List itemtotalamount;
@@ -36,8 +37,9 @@ class Billing extends StatefulWidget {
 
 class _BillingState extends State<Billing> {
   TextEditingController customername_controller = TextEditingController();
-  TextEditingController price_controller = TextEditingController();
+  TextEditingController phoneno_controller = TextEditingController();
   TextEditingController paidamount_controller = TextEditingController();
+  TextEditingController description_controller = TextEditingController();
 
   final customername = <String>[]; // Creates growable list.
   final customerphone = <String>[];
@@ -46,7 +48,7 @@ class _BillingState extends State<Billing> {
   bool bool_cont = true;
   bool bool_noitemsincart = false;
   Color? discountcontainercolor=Colors.blueAccent;
-
+int _selectedIndex = 0; 
  
   List a_list_itemname = [];
   List a_list_itemquantity = [];
@@ -62,7 +64,7 @@ class _BillingState extends State<Billing> {
   
   additem_cl() {
     customername.add(customername_controller.text);
-    customerphone.add(price_controller.text);
+    customerphone.add(phoneno_controller.text);
     print(customername);
     print(customerphone);
     Navigator.push(
@@ -87,7 +89,28 @@ widget.itemdiscountvaluecost,
         
        
 }
-
+void _onItemTapped(int index) {
+  setState(() {
+    _selectedIndex = index;
+    if (index == 0) {
+      Navigator.pop(context);
+    }
+    if (index==1) {
+      setState(() {
+        save_customer();
+      });
+      
+    }
+    if (index==2) {
+      setState(() {
+        //addnew_customer();
+      });
+      
+      
+    }
+   
+  });
+}
    
 
 
@@ -136,7 +159,7 @@ widget.itemtotalamount.forEach((item) {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: TextField(
-                    controller: price_controller,
+                    controller: phoneno_controller,
                     decoration: InputDecoration(
                       labelText: "PHONE NO",
                       border: OutlineInputBorder(
@@ -362,30 +385,49 @@ widget.itemtotalamount.forEach((item) {
                 child: SizedBox(
                   width: 300,
                   child: TextField(
-                   
+                    controller: description_controller,
                     maxLines: null,
 
                     
                       decoration: InputDecoration( 
                         
                         contentPadding: EdgeInsets.symmetric(vertical: 8.0),
-                          labelText: "description",
+                          labelText: "Description or Address",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                           ))),
                 ),
               ),
-              ElevatedButton(onPressed: additem_cl, child: Text("add")),
+              ElevatedButton(onPressed: add_customer, child: Text("save")),
               ElevatedButton(
                   onPressed: show, child: Text("show_customer_detail")),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex, //New
+  onTap:_onItemTapped, 
+    items: const <BottomNavigationBarItem>[
+      
+      
+      BottomNavigationBarItem(
+        icon: Icon(Icons.keyboard_arrow_left),
+        label: 'Back',
+        
       ),
+      BottomNavigationBarItem(
+
+        icon: Icon(Icons.save),
+        label: 'Save',
+        
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.add),
+        label: 'Save & New',
+      ),
+    ],
+  ),
     );
   }
   
@@ -398,4 +440,17 @@ widget.itemtotalamount.forEach((item) {
 //  //Text(sum.toStringAsFixed(2));
 //  print('Total sum:${sum.toStringAsFixed(2)}');
 //  }
+
+  void add_customer() {
+    Navigator.push(
+       context,MaterialPageRoute(builder: (context) => Identities("","")));
+    
+  }
+  
+  void save_customer() {
+    Navigator.push(
+       context,MaterialPageRoute(builder: (context) => AppHomeScreen()));
+    
+  }
 }
+

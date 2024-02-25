@@ -38,6 +38,7 @@ List list_itemdiscount = [];
 List list_itemnettotal = [];
 List list_itemdiscountvaluecost = [];
 List list_itemtotalamount = [];
+int _selectedIndex = 0; 
 
   @override
   void initState() {
@@ -89,7 +90,28 @@ List list_itemtotalamount = [];
       
     });
   }
-
+void _onItemTapped(int index) {
+  setState(() {
+    _selectedIndex = index;
+    if (index == 0) {
+      Navigator.pop(context);
+    }
+    if (index==1) {
+      setState(() {
+        saves();
+      });
+      
+    }
+    if (index==2) {
+      setState(() {
+        addnew();
+      });
+      
+      
+    }
+   
+  });
+}
   void saves() {
     setState(() {
       isVisible = true;
@@ -337,35 +359,7 @@ list_itemtotalamount,
                             ),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 231, 234, 237),
-                              ),
-                              onPressed: saves,
-                              child: Text("Save"),
-                            ),
-                          // ElevatedButton(
-                          //   style: ElevatedButton.styleFrom(
-                          //     backgroundColor:
-                          //         const Color.fromARGB(255, 227, 233, 238),
-                          //   ),
-                          //   onPressed: clear,
-                          //   child: Text("clear"),
-                          // ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 208, 222, 233),
-                              ),
-                              onPressed: addnew,
-                              child: Text("Save & Add  New Item"),
-                            )
-                          ],
-                        ),
+                        
                       ],
                     )),
               )
@@ -373,6 +367,28 @@ list_itemtotalamount,
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex, //New
+  onTap:_onItemTapped, 
+    items: const <BottomNavigationBarItem>[
+      
+      
+      BottomNavigationBarItem(
+        icon: Icon(Icons.keyboard_arrow_left),
+        label: 'Back',
+        
+      ),
+      BottomNavigationBarItem(
+
+        icon: Icon(Icons.save),
+        label: 'Save',
+        
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.add),
+        label: 'Save & New',
+      ),
+    ],
+  ),
     );
-  }
-}
+  }}

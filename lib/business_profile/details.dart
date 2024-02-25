@@ -1,17 +1,21 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
-import 'package:final_project1/home_screen/transaction_details.dart';
+import 'package:final_project1/home_screen/apphomescreen.dart';
 import 'package:flutter/material.dart';
 
 
 class Details extends StatefulWidget {
   const Details({super.key});
 
+ 
+
   @override
   State<Details> createState() => _DetailsState();
 }
 
+
 class _DetailsState extends State<Details> {
+  
   String Business_Name = "";
   String Owner_Name = "";
   String Phone_No = "";
@@ -51,6 +55,7 @@ class _DetailsState extends State<Details> {
       Business_Description = "";
     });
   }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +139,7 @@ class _DetailsState extends State<Details> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  TransactionDetails(Owner_Name),
+                                  Identities(Owner_Name,Business_Name),
                             ));
                       },
                       icon: Icon(Icons.send)),
