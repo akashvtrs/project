@@ -14,6 +14,7 @@ class Identities extends StatefulWidget {
   final List items_noofitems;
   final List amount_totalamount;
   final List bal_balance;
+  
   const Identities({super.key,required this.name_owner, required this.name_Business,required this.name_customername,required this.no_phoneno,required this.items_noofitems,required this.amount_totalamount,required this.bal_balance});
 
   @override
@@ -58,6 +59,18 @@ class _IdentitiesState extends State<Identities> {
               MaterialPageRoute(
                 builder: (context) => Billing(
                    [],[],[],[],[],[],[],name_owner:widget.name_owner,name_business:widget.name_Business,
+                    add_list_amount_totalamount: widget.amount_totalamount,
+                  
+                  
+                  add_list_name_customername: widget.name_customername,
+                  
+                  add_list_no_phoneno: widget.no_phoneno,
+                 
+                  add_list_items_noofitems: widget.items_noofitems,
+                  
+                  add_list_bal_balance: widget.bal_balance,
+
+                  
                 ),
               ));
         },

@@ -14,7 +14,13 @@ List add_items_list_itemdiscount = [];
 List add_items_list_itemnettotal = [];
 List add_items_list_itemdiscountvaluecost = [];
 List add_items_list_itemtotalamount = [];
-   AddItems(this.add_items_list_itemname,this.add_items_list_itemquantity,this.add_items_list_itemprice,this.add_items_list_itemdiscount,this.add_items_list_itemnettotal,this.add_items_list_itemdiscountvaluecost,this.add_items_list_itemtotalamount,{super.key});
+List add_list_name_customername;
+ List add_list_no_phoneno;
+ List add_list_items_noofitems;
+ List add_list_amount_totalamount;
+ List add_list_bal_balance;
+
+   AddItems(this.add_items_list_itemname,this.add_items_list_itemquantity,this.add_items_list_itemprice,this.add_items_list_itemdiscount,this.add_items_list_itemnettotal,this.add_items_list_itemdiscountvaluecost,this.add_items_list_itemtotalamount,{super.key,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,});
 
   @override
   State<AddItems> createState() => _AddItemsState();
@@ -132,7 +138,22 @@ void _onItemTapped(int index) {
                   list_itemdiscount,
                   list_itemnettotal,
                   list_itemdiscountvaluecost,
-                  list_itemtotalamount,name_owner: "",name_business: "",)));
+                  list_itemtotalamount,name_owner: "",name_business: "",  
+                  add_list_amount_totalamount: widget.add_list_amount_totalamount,
+                  
+                  
+                  add_list_name_customername: widget.add_list_name_customername,
+                  
+                  add_list_no_phoneno:widget.add_list_no_phoneno,
+                 
+                  add_list_items_noofitems: widget.add_list_items_noofitems,
+                  
+                  add_list_bal_balance: widget.add_list_bal_balance,
+
+                  
+
+
+                  )));
                   
     });
   }
@@ -179,6 +200,11 @@ list_itemdiscount,
 list_itemnettotal,
 list_itemdiscountvaluecost,
 list_itemtotalamount,
+add_list_name_customername: widget.add_list_name_customername,
+        add_list_no_phoneno: widget.add_list_no_phoneno,
+        add_list_items_noofitems: widget.add_list_items_noofitems,
+        add_list_amount_totalamount:  widget.add_list_amount_totalamount,
+        add_list_bal_balance:     widget.add_list_bal_balance
     );
     print("called");
     setState(() {

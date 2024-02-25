@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, avoid_function_literals_in_foreach_calls
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, avoid_function_literals_in_foreach_calls, must_be_immutable
 
 
 import 'package:final_project1/billing_page/additems.dart';
@@ -21,9 +21,14 @@ class Billing extends StatefulWidget {
   final List itemtotalamount;
   final String name_owner;
   final String name_business;
+ List add_list_name_customername=[];
+ List add_list_no_phoneno=[];
+ List add_list_items_noofitems=[];
+ List add_list_amount_totalamount=[];
+ List add_list_bal_balance=[];
 
 
-  const Billing(
+  Billing(
       this.itemname,
       this.itemquantity,
       this.itemprice,
@@ -31,7 +36,7 @@ class Billing extends StatefulWidget {
       this.itemnettotal,
       this.itemdiscountvaluecost,
       this.itemtotalamount,
-      {super.key, required this.name_business, required this.name_owner});
+      {super.key, required this.name_business, required this.name_owner,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,});
 
   @override
   State<Billing> createState() => _BillingState();
@@ -105,6 +110,12 @@ bal_balance:list_bal_balance
        widget.itemnettotal,
 widget.itemdiscountvaluecost,
       widget.itemtotalamount,
+      add_list_name_customername: list_name_customername,
+      add_list_no_phoneno: list_no_phoneno,
+      add_list_items_noofitems: list_items_noofitems,
+      add_list_amount_totalamount: list_amount_totalamount,
+      add_list_bal_balance: list_bal_balance,
+      
         )));
   }
 
@@ -171,6 +182,12 @@ widget.itemtotalamount.forEach((item) {
    if (widget.itemname.isEmpty) {
      bool_noitemsincart=!bool_noitemsincart;
    }     
+   list_name_customername=widget.add_list_name_customername;
+   list_no_phoneno=widget.add_list_no_phoneno;
+   list_items_noofitems=widget.add_list_items_noofitems;
+   list_amount_totalamount=widget.add_list_amount_totalamount;
+   list_bal_balance=widget.add_list_bal_balance;
+
   }
 
   @override
@@ -267,6 +284,12 @@ widget.itemtotalamount.forEach((item) {
                     itemnettotal_l:         widget.itemnettotal,
                     itemdiscountvaluecost_l:widget.itemdiscountvaluecost,
                     itemtotalamount_l:      widget.itemtotalamount,
+                    add_list_name_customername: list_name_customername,
+                    add_list_no_phoneno: list_no_phoneno,
+                    add_list_items_noofitems: list_items_noofitems,
+                    add_list_amount_totalamount: list_amount_totalamount,
+                    add_list_bal_balance: list_bal_balance,
+
                         ),
                   ],
                 ),
@@ -480,9 +503,22 @@ widget.itemtotalamount.forEach((item) {
     print(list_items_noofitems);
     print(list_amount_totalamount);
     print(list_bal_balance);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Billing([], [], [], [], [], [],[], name_business:widget.name_business  , name_owner: widget.name_owner,
+        
+        add_list_name_customername: list_name_customername,
+        add_list_no_phoneno: list_no_phoneno,
+        add_list_items_noofitems: list_items_noofitems,
+        add_list_amount_totalamount: list_amount_totalamount,
+        add_list_bal_balance: list_bal_balance,
+
+        ),
+      )
+    );
     setState(() {
     widget.itemname.clear();
-    print(widget.itemname);
     widget.itemquantity.clear();
     print(widget.itemquantity);
     widget.itemprice.clear();
@@ -502,25 +538,9 @@ widget.itemtotalamount.forEach((item) {
     customername_controller.text="";
     phoneno_controller.text="";
     description_controller.text="";
-    paidamount_controller.text="0.00";
+    paidamount_controller.text="0.00";  
 
-
-    
-
-      
-  
     });
   }
-  
-  
-
-//    double sum = 0.0;
-//  widget.itemdiscountvaluecost.forEach((item) {
-//    sum += double.parse(item);
-//  });
-//  //Text(sum.toStringAsFixed(2));
-//  print('Total sum:${sum.toStringAsFixed(2)}');
-//  }
- 
 }
 

@@ -13,8 +13,14 @@ class ListItems extends StatefulWidget {
   List itemnettotal_l=[""];
   List itemdiscountvaluecost_l=[""];
   List itemtotalamount_l=[""];
+   List add_list_name_customername;
+ List add_list_no_phoneno;
+ List add_list_items_noofitems;
+ List add_list_amount_totalamount;
+ List add_list_bal_balance;
 
-   ListItems({super.key, required  this.itemname_l, required this.itemquantity_l, required this.itemprice_l, required this.itemdiscount_l, required this.itemnettotal_l, required this.itemdiscountvaluecost_l, required this.itemtotalamount_l});
+
+   ListItems({super.key, required  this.itemname_l, required this.itemquantity_l, required this.itemprice_l, required this.itemdiscount_l, required this.itemnettotal_l, required this.itemdiscountvaluecost_l, required this.itemtotalamount_l,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,});
 
   @override
   State<ListItems> createState() => _ListItemsState();
@@ -179,7 +185,13 @@ class _ListItemsState extends State<ListItems> {
                       widget.itemdiscountvaluecost_l,
                       widget.itemtotalamount_l,
                       name_owner: "",
-                      name_business: "",)
+                      name_business: "",
+                      add_list_name_customername:widget.add_list_name_customername,
+                      add_list_no_phoneno:widget.add_list_no_phoneno,
+                      add_list_items_noofitems:widget.add_list_items_noofitems,
+                      add_list_amount_totalamount:widget.add_list_amount_totalamount,
+                      add_list_bal_balance:widget.add_list_bal_balance,
+                      )
                       ));}
                                     );
                                   }, child: Text("delete")),
