@@ -22,29 +22,21 @@ class MyApp extends StatelessWidget {
         
       ),
       debugShowCheckedModeBanner: false,
-      home:   Billing(
-       
+      home:   AddItems([],[],[],[],
         [],
         [],
         [],
-        [],
-        [],
-        [],
-        [],
-        name_business: "",
+        name_Business: "",
         name_owner: "",
-        add_list_amount_totalamount: [],
         add_list_name_customername: [],
         add_list_no_phoneno: [],
         add_list_items_noofitems: [],
+        add_list_amount_totalamount: [],
         add_list_bal_balance: [],
         customerid_cont: "",
         phoneno_cont: "",
+          
         
-       
-
-
-
       ),
     );
   }
