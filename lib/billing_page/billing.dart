@@ -49,7 +49,7 @@ class _BillingState extends State<Billing> {
   TextEditingController customername_controller = TextEditingController();
   TextEditingController phoneno_controller = TextEditingController();
   TextEditingController paidamount_controller = TextEditingController();
-  TextEditingController description_controller = TextEditingController();
+
 
   final customername = <String>[]; // Creates growable list.
   final customerphone = <String>[];
@@ -196,6 +196,9 @@ widget.itemtotalamount.forEach((item) {
    list_bal_balance=widget.add_list_bal_balance;
    customername_controller.text=widget.customerid_cont;
    phoneno_controller.text=widget.phoneno_cont;
+    if (widget.itemname.isEmpty) {
+                        bool_cont = !bool_cont;
+                      }
    
 
   }
@@ -203,12 +206,28 @@ widget.itemtotalamount.forEach((item) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      appBar: AppBar(
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          
+          child: Container(
+            height: 1,
+            color: Colors.blue.shade900,
+          )
+        ),
+        backgroundColor: Colors.blue.shade100,
+        foregroundColor: Colors.blue.shade900,
+          automaticallyImplyLeading: false,
+          leading:  Icon(Icons.account_circle_outlined),
+        title: Center(child: Text("Customer Details")),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(right: 8.0, left: 8.0),
           child: Column(
             children: [
-              Text("New Sale!!!!"),
+              
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: TextField(
@@ -240,6 +259,7 @@ widget.itemtotalamount.forEach((item) {
                         bool_cont = !bool_cont;
                        
                       }
+                     
                       
                       
                       
@@ -247,17 +267,21 @@ widget.itemtotalamount.forEach((item) {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.cyan.withOpacity(0.5),
-                      border: Border.all(),
+                      color: Colors.blue.shade100,
+                      
+                      border: Border.all(color: Colors.blue.shade900),
+                      
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
-                    height: 40,
+                    
                     width: double.infinity,
                     child: Row(
                       children: [
-                        Icon(Icons.arrow_drop_down_circle_outlined,
-                            color: Colors.white),
-                        Text("Billed Items"),
+                        Icon(Icons.arrow_drop_down,
+                            color: Colors.blue.shade900),
+                        Text("Billed Items",style: TextStyle(
+                          color: Colors.blue.shade900
+                        ),),
                       ],
                     ),
                   ),
@@ -267,25 +291,6 @@ widget.itemtotalamount.forEach((item) {
                 visible: bool_cont,
                 child: Column(
                   children: [
-                    
-                    Padding(
-                      padding: const EdgeInsets.only(bottom :8.0),
-                      child: Visibility(
-                        visible: bool_noitemsincart,
-                        child: Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 209, 227, 14).withOpacity(0.5),
-                          border: Border.all(),
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        ),
-                        height: 20,
-                        width: double.infinity,
-                        child: Center(child: Text("NO Items In Cart")),
-                                          ),
-                      ),
-                    ),
-                    
-
                     ListItems(
                           itemname_l:widget.itemname,
                     itemquantity_l:         widget.itemquantity,
@@ -450,25 +455,7 @@ widget.itemtotalamount.forEach((item) {
                       ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                child: SizedBox(
-                  width: 300,
-                  child: TextField(
-                    controller: description_controller,
-                    maxLines: null,
-
-                    
-                      decoration: InputDecoration( 
-                        
-                        contentPadding: EdgeInsets.symmetric(vertical: 8.0),
-                          labelText: "Description or Address",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                          ))),
-                ),
-              ),
-             
+              
             ],
           ),
         ),
@@ -496,6 +483,13 @@ widget.itemtotalamount.forEach((item) {
       ),
     ],
   ),
+  floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: const Color.fromRGBO(82, 170, 94, 1.0),
+          tooltip: 'Increment',
+          onPressed: (){},
+          child: const Icon(Icons.add, size: 28),
+          ),
     );
   }
   
@@ -547,7 +541,7 @@ widget.itemtotalamount.forEach((item) {
     balance = "0.00";
     customername_controller.text="";
     phoneno_controller.text="";
-    description_controller.text="";
+    
     paidamount_controller.text="0.00";  
 
     });

@@ -53,6 +53,7 @@ class _IdentitiesState extends State<Identities> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
           automaticallyImplyLeading: false,
         backgroundColor: Colors.blue.shade100,
         foregroundColor: Colors.blue.shade900,
@@ -185,9 +186,13 @@ class _IdentitiesState extends State<Identities> {
       ],
     ),
   ),
-     
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
+     floatingActionButtonLocation:FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text("Add New Customer"),
+        icon: Icon(Icons.person_add),
+        backgroundColor: Colors.blue.shade900,
+        foregroundColor: Colors.white,
+        
         onPressed: () {
           Navigator.push(
               context,
@@ -211,7 +216,7 @@ class _IdentitiesState extends State<Identities> {
                 ),
               ));
         },
-        child: Icon(Icons.add),
+        
       ),
     );
   }

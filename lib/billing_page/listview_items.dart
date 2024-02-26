@@ -32,9 +32,12 @@ class _ListItemsState extends State<ListItems> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
       height:320,
       width: double.infinity,
-      color: Colors.red,
+      color: Colors.blue.shade100,
+
+     
       
       child: ListView.builder(
           
