@@ -5,6 +5,7 @@ import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
 import 'package:final_project1/business_profile/details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 
 class Identities extends StatefulWidget {
@@ -52,11 +53,9 @@ class _IdentitiesState extends State<Identities> {
           automaticallyImplyLeading: false,
         backgroundColor: Colors.blue.shade100,
         foregroundColor: Colors.blue.shade900,
-        leading:  Icon(Icons.home,size: 30),
+        leading:  Icon(Icons.home),
         title: Center(
-          child: Text("VMK Enterprises Payments ", style: TextStyle(fontSize:
-              20
-              )),
+          child: Text("VMK Enterprises Payments "),
         ),
       ),
   body: Padding(
@@ -78,13 +77,15 @@ class _IdentitiesState extends State<Identities> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.blue.shade100,
-                border: Border.all(color: Colors.blue.shade100),
+                border: Border.all(color: Colors.blue.shade900),
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
               ),
               child: Row(
                 children: [
                   Icon(Icons.arrow_drop_down,color: Colors.blue.shade900),
-                  Text("Saved Customers",style: TextStyle(color: Colors.blue.shade900),),
+                  Text("Saved Customers",style: TextStyle(color: Colors.blue.shade900,
+                    
+                  ),),
                 ],
               )),
           ),
@@ -102,16 +103,24 @@ class _IdentitiesState extends State<Identities> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text("Total No.of Customers:${widget.name_customername.length}"),
+                child: Text("Total No.of Customers:${widget.name_customername.length}",style: TextStyle(
+                  fontWeight: FontWeight.bold
+                )),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text("Total Payments:${totalpayments.toStringAsFixed(2)}"),
+                    Text("Total Payments:",style: TextStyle(
+                  fontWeight: FontWeight.bold
+                )),
                     Icon(Icons.currency_rupee,color: Colors.black,
-                    size: 20,
+                    
+
                     ),
+                    Text(totalpayments.toStringAsFixed(2),style: TextStyle(
+                        fontWeight: FontWeight.bold
+                    ))
                   ],
                 ),
               ),
@@ -119,25 +128,46 @@ class _IdentitiesState extends State<Identities> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text("Pending Payment:${pendingpayment.toStringAsFixed(2)}"),
+                    Text("Pending Payment:",style: TextStyle(
+                  fontWeight: FontWeight.bold
+                )),
                     Icon(Icons.currency_rupee,color: Colors.black,
-                    size: 20,
+                    
                     ),
+                    Text(pendingpayment.toStringAsFixed(2),style: TextStyle(
+                        fontWeight: FontWeight.bold
+                    ))
                   ],
                 ),
               ),
+                Divider(
+                  color: Color.fromARGB(255, 229, 223, 214),
+                )
+              ,
               
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Row(
+                    Column(
                       children: [
-                        Text("Company's Acccount Balance:${companybalance.toStringAsFixed(2)}"),
-                        Icon(Icons.currency_rupee,color: Colors.black,
-                    size: 20,
-                    ),
+                        Text("Company's Account Balance:",style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          
+                        ),),
+                        Row(
+                          children: [
+                            
+                            Icon(Icons.currency_rupee,color: Colors.black,
+
+                        
+                        ),
+                        Text(companybalance.toStringAsFixed(2),style: TextStyle(
+                        fontWeight: FontWeight.bold
+                    )),
+                          ],
+                        ),
                       ],
                     ),
                   ],
@@ -196,6 +226,7 @@ class AppHomeScreen extends StatefulWidget {
 }
 
 class _AppHomeScreenState extends State<AppHomeScreen> {
+  bool delete_bool=false;
   
   
   @override
@@ -212,34 +243,99 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
           itemCount: widget.name_customername.length,
           itemBuilder: (context, index) {
             
-            return Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Customer Name: ${widget.name_customername[index]}"),
-                  Text("Phone No: ${widget.no_phoneno[index]}"),
-                  Text("Purchased No. of Items: ${widget.items_noofitems[index]}"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
+            return InkWell(
+              onTap: () {
+                setState(() {
+                  delete_bool=!delete_bool;
+                  print(delete_bool.toString());
+                });
+                
+              },
+              child: Card(
+               
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Customer Name: ${widget.name_customername[index]}"),
+                    Text("Phone No: ${widget.no_phoneno[index]}"),
+                    Text("Purchased No. of Items: ${widget.items_noofitems[index]}"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            
+                            Text("Total Amount:"),Icon(Icons.currency_rupee, size: 15),
+                            Text(widget.amount_totalamount[index])
+                          ],
+                        ),
+                       Row(
+                         children: [
                           
-                          Text("Total Amount:"),Icon(Icons.currency_rupee, size: 15),
-                          Text(widget.amount_totalamount[index])
-                        ],
+                           Text("Balance:"),Icon(Icons.currency_rupee, size: 15),
+                           Text(widget.bal_balance[index])
+                         ],
+                       ),],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4.0,bottom: 4.0),
+                      child: Visibility(
+                        visible: delete_bool,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton( 
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue.shade100,
+                               
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  widget.name_customername.removeAt(index);
+                                  widget.no_phoneno.removeAt(index);
+                                  widget.items_noofitems.removeAt(index);
+                                  widget.amount_totalamount.removeAt(index);
+                                  widget.bal_balance.removeAt(index);
+                                  delete_bool=!delete_bool;
+                                  Navigator.push(context, 
+                                  MaterialPageRoute(
+                                    builder: (context) => Identities(
+                                      name_customername: widget.name_customername,
+                                      no_phoneno: widget.no_phoneno,
+                                      items_noofitems: widget.items_noofitems,
+                                      amount_totalamount: widget.amount_totalamount,
+                                      bal_balance: widget.bal_balance,
+                                      name_owner:"",
+                                      name_Business:""
+
+
+                                    )
+                                  )
+                                  );
+
+
+
+
+
+                                });
+                                
+                              }       ,    
+                              child: Row(
+                                children: [
+                                  Icon(Icons.delete,color: Colors.red,
+                                    size: 15,
+                                  ),
+                                  Text("Delete",style: TextStyle(color: Colors.red),),
+                                ],
+                              ),),
+                          ],
+                        ),
                       ),
-                     Row(
-                       children: [
-                        
-                         Text("Balance:"),Icon(Icons.currency_rupee, size: 15),
-                         Text(widget.bal_balance[index])
-                       ],
-                     ),],
-                  ),
-                 
-                ],
+                    ),
+                   
+                  ],
+                ),
               ),
             );
           }
