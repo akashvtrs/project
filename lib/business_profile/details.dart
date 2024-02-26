@@ -130,7 +130,16 @@ business_description_controller.text="";
       
       appBar: AppBar(
         backgroundColor: Colors.blue.shade100,
-        title: Center(child: Text("BUSINESS PROFILE", style: TextStyle(fontSize: 20)),),
+        title: Center(child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.business, color: Colors.blue.shade900,size: 30,),
+            Text("BUSINESS PROFILE", style: TextStyle(fontSize:
+            20,
+            color: Colors.blue.shade900,
+            )),
+          ],
+        ),),
       ),
       body: Padding(
         padding: EdgeInsets.only(left: 10.0, right: 10.0),
@@ -141,6 +150,7 @@ business_description_controller.text="";
             TextField(
               controller: business_name_controller,
               decoration: InputDecoration(
+                suffixIcon: Icon(Icons.business_center,color:Colors.blue),
                   label: Text("Business Name"),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
@@ -148,13 +158,15 @@ business_description_controller.text="";
             TextField(
               controller: owner_name_controller,
               decoration: InputDecoration(
-                  label: Text("Owner Name"),
+                  suffixIcon: Icon(Icons.person,color:Colors.blue),
+                  label: Text("Manager Name"),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
               controller: phone_no_controller,
               decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.phone,color:Colors.blue),
                   label: Text("Phone No"),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
@@ -162,6 +174,7 @@ business_description_controller.text="";
             TextField(
               controller: email_controller,
               decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.email,color:Colors.blue),
                   label: Text("Email"),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
@@ -169,6 +182,7 @@ business_description_controller.text="";
             TextField(
               controller: address_controller,
               decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.location_on,color:Colors.blue),
                   label: Text("Address"),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
@@ -176,6 +190,7 @@ business_description_controller.text="";
             TextField(
               controller: pincode_controller,
               decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.pin,color:Colors.blue),
                   label: Text("Pincode"),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
@@ -183,6 +198,7 @@ business_description_controller.text="";
             TextField(
               controller: business_description_controller,
               decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.description,color:Colors.blue),
                   label: Text("Business Description"),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
@@ -192,6 +208,19 @@ business_description_controller.text="";
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.black,
+        selectedIconTheme: IconThemeData(color: Colors.red),
+        unselectedIconTheme: IconThemeData(color: Colors.black),
+        
+        
+        selectedLabelStyle: TextStyle(
+          fontSize: 14.0,
+        
+         
+          
+        ),
+        backgroundColor: Colors.blue.shade100,
         currentIndex: _selectedIndex, //New
   onTap:_onItemTapped, 
     items: const <BottomNavigationBarItem>[
@@ -209,8 +238,11 @@ business_description_controller.text="";
         
       ),
       BottomNavigationBarItem(
+       
         icon: Icon(Icons.send),
         label: 'Next',
+
+        
       ),
     ],
   ),
