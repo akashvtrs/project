@@ -30,24 +30,23 @@ class _IdentitiesState extends State<Identities> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         
+          automaticallyImplyLeading: false,
         backgroundColor: Colors.blue.shade100,
         foregroundColor: Colors.blue.shade900,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            
-            Text("VMK Enterprises Payments ", style: TextStyle(fontSize:
-                20
-                )),
-                Icon(Icons.home,size: 30)
-          ],
+        leading:  Icon(Icons.home,size: 30),
+        title: Center(
+          child: Text("VMK Enterprises Payments ", style: TextStyle(fontSize:
+              20
+              )),
         ),
       ),
   body: Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
       children: [
+        
+        
+        
         InkWell(
           onTap: () {
             setState(() {
@@ -77,6 +76,57 @@ class _IdentitiesState extends State<Identities> {
             name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(top:8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Total No.of Customers:"),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text("Total Payments:"),
+                    Icon(Icons.currency_rupee,color: Colors.blue.shade900,
+                    size: 20,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text("Pending Payment:"),
+                    Icon(Icons.currency_rupee,color: Colors.blue.shade900,
+                    size: 20,
+                    ),
+                  ],
+                ),
+              ),
+              
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        Text("Company's Acccount Balance:"),
+                        Icon(Icons.currency_rupee,color: Colors.blue.shade900,
+                    size: 20,
+                    ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        )
       ],
     ),
   ),
