@@ -191,6 +191,9 @@ class _ListItemsState extends State<ListItems> {
                       add_list_items_noofitems:widget.add_list_items_noofitems,
                       add_list_amount_totalamount:widget.add_list_amount_totalamount,
                       add_list_bal_balance:widget.add_list_bal_balance,
+                      customerid_cont: "",
+                      phoneno_cont: "",
+
                       )
                       ));}
                                     );

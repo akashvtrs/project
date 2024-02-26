@@ -26,6 +26,9 @@ class Billing extends StatefulWidget {
  List add_list_items_noofitems=[];
  List add_list_amount_totalamount=[];
  List add_list_bal_balance=[];
+ String customerid_cont;
+  String phoneno_cont;
+
 
 
   Billing(
@@ -36,7 +39,7 @@ class Billing extends StatefulWidget {
       this.itemnettotal,
       this.itemdiscountvaluecost,
       this.itemtotalamount,
-      {super.key, required this.name_business, required this.name_owner,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,});
+      {super.key, required this.name_business, required this.name_owner,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,required this.customerid_cont,required this.phoneno_cont});
 
   @override
   State<Billing> createState() => _BillingState();
@@ -115,6 +118,10 @@ widget.itemdiscountvaluecost,
       add_list_items_noofitems: list_items_noofitems,
       add_list_amount_totalamount: list_amount_totalamount,
       add_list_bal_balance: list_bal_balance,
+      name_owner: widget.name_owner,
+      name_Business: widget.name_business,
+      customerid_cont:customername_controller.text,
+      phoneno_cont:phoneno_controller.text
       
         )));
   }
@@ -187,6 +194,9 @@ widget.itemtotalamount.forEach((item) {
    list_items_noofitems=widget.add_list_items_noofitems;
    list_amount_totalamount=widget.add_list_amount_totalamount;
    list_bal_balance=widget.add_list_bal_balance;
+   customername_controller.text=widget.customerid_cont;
+   phoneno_controller.text=widget.phoneno_cont;
+   
 
   }
 
@@ -506,7 +516,7 @@ widget.itemtotalamount.forEach((item) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Billing([], [], [], [], [], [],[], name_business:widget.name_business  , name_owner: widget.name_owner,
+        builder: (context) => Billing([], [], [], [], [], [],[], name_business:widget.name_business  , name_owner: widget.name_owner,customerid_cont: customername_controller.text,phoneno_cont: phoneno_controller.text,
         
         add_list_name_customername: list_name_customername,
         add_list_no_phoneno: list_no_phoneno,

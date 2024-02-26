@@ -69,6 +69,8 @@ class _IdentitiesState extends State<Identities> {
                   add_list_items_noofitems: widget.items_noofitems,
                   
                   add_list_bal_balance: widget.bal_balance,
+                  customerid_cont: "",
+                  phoneno_cont: "",
 
                   
                 ),
