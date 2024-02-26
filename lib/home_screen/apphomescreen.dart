@@ -5,6 +5,7 @@ import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
 import 'package:final_project1/business_profile/details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Identities extends StatefulWidget {
   final String name_owner;
@@ -22,6 +23,8 @@ class Identities extends StatefulWidget {
 }
 
 class _IdentitiesState extends State<Identities> {
+  bool savedcustomers_bool=true;
+  
   
   @override
   Widget build(BuildContext context) {
@@ -30,29 +33,52 @@ class _IdentitiesState extends State<Identities> {
          
         backgroundColor: Colors.blue.shade100,
         foregroundColor: Colors.blue.shade900,
-        title: Column(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                
-                Text("VMK Enterprises Payments ", style: TextStyle(fontSize:
-                    20
-                    )),
-                    Icon(Icons.home,size: 30)
-              ],
-            ),
             
+            Text("VMK Enterprises Payments ", style: TextStyle(fontSize:
+                20
+                )),
+                Icon(Icons.home,size: 30)
           ],
         ),
       ),
-  body: Column(
-    children: [
-      Text("sfs"),
-      AppHomeScreen(
-        name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
-      ),
-    ],
+  body: Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      children: [
+        InkWell(
+          onTap: () {
+            setState(() {
+              savedcustomers_bool = !savedcustomers_bool;
+            });
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(bottom:8.0),
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.blue.shade100,
+                border: Border.all(color: Colors.blue.shade100),
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.arrow_drop_down,color: Colors.blue.shade900),
+                  Text("Saved Customers",style: TextStyle(color: Colors.blue.shade900),),
+                ],
+              )),
+          ),
+        ),
+        Visibility(
+          visible: savedcustomers_bool,
+          child: AppHomeScreen(
+            name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
+          ),
+        ),
+      ],
+    ),
   ),
      
       floatingActionButton: FloatingActionButton(
@@ -101,16 +127,18 @@ class AppHomeScreen extends StatefulWidget {
 }
 
 class _AppHomeScreenState extends State<AppHomeScreen> {
+  
+  
   @override
   Widget build(BuildContext context) {
     return 
     Container(
       color: Colors.blue,
-      height: 500,
+      height: 350,
       width: double.infinity,
       child: Scaffold(
         
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue.shade100,
         body: ListView.builder(
           itemCount: widget.name_customername.length,
           itemBuilder: (context, index) {
