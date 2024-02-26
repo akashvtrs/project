@@ -90,7 +90,7 @@ class _IdentitiesState extends State<Identities> {
                 child: Row(
                   children: [
                     Text("Total Payments:"),
-                    Icon(Icons.currency_rupee,color: Colors.blue.shade900,
+                    Icon(Icons.currency_rupee,color: Colors.black,
                     size: 20,
                     ),
                   ],
@@ -101,7 +101,7 @@ class _IdentitiesState extends State<Identities> {
                 child: Row(
                   children: [
                     Text("Pending Payment:"),
-                    Icon(Icons.currency_rupee,color: Colors.blue.shade900,
+                    Icon(Icons.currency_rupee,color: Colors.black,
                     size: 20,
                     ),
                   ],
@@ -116,7 +116,7 @@ class _IdentitiesState extends State<Identities> {
                     Row(
                       children: [
                         Text("Company's Acccount Balance:"),
-                        Icon(Icons.currency_rupee,color: Colors.blue.shade900,
+                        Icon(Icons.currency_rupee,color: Colors.black,
                     size: 20,
                     ),
                       ],
