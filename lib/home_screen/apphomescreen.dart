@@ -27,28 +27,32 @@ class _IdentitiesState extends State<Identities> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
-        
-        
+         
+        backgroundColor: Colors.blue.shade100,
+        foregroundColor: Colors.blue.shade900,
         title: Column(
-          
           children: [
-            Center(
-              child: Text(widget.name_Business,style: TextStyle(
-                fontSize:50,
-                color: Colors.red
-              ),),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                
+                Text("VMK Enterprises Payments ", style: TextStyle(fontSize:
+                    20
+                    )),
+                    Icon(Icons.home,size: 30)
+              ],
             ),
-            Center(
-              child: Text("--${widget.name_owner}",style: TextStyle(
-                color: Colors.blue)),
-            ),
+            
           ],
         ),
-        
       ),
-  body: AppHomeScreen(
-    name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
+  body: Column(
+    children: [
+      Text("sfs"),
+      AppHomeScreen(
+        name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
+      ),
+    ],
   ),
      
       floatingActionButton: FloatingActionButton(
@@ -100,43 +104,49 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return 
-    Scaffold(
-      backgroundColor: Colors.red,
-      body: ListView.builder(
-        itemCount: widget.name_customername.length,
-        itemBuilder: (context, index) {
-          
-          return Card(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Customer Name: ${widget.name_customername[index]}"),
-                Text("Phone No: ${widget.no_phoneno[index]}"),
-                Text("Purchased No. of Items: ${widget.items_noofitems[index]}"),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
+    Container(
+      color: Colors.blue,
+      height: 500,
+      width: double.infinity,
+      child: Scaffold(
+        
+        backgroundColor: Colors.red,
+        body: ListView.builder(
+          itemCount: widget.name_customername.length,
+          itemBuilder: (context, index) {
+            
+            return Card(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Customer Name: ${widget.name_customername[index]}"),
+                  Text("Phone No: ${widget.no_phoneno[index]}"),
+                  Text("Purchased No. of Items: ${widget.items_noofitems[index]}"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          
+                          Text("Total Amount:"),Icon(Icons.currency_rupee, size: 15),
+                          Text(widget.amount_totalamount[index])
+                        ],
+                      ),
+                     Row(
+                       children: [
                         
-                        Text("Total Amount:"),Icon(Icons.currency_rupee, size: 15),
-                        Text(widget.amount_totalamount[index])
-                      ],
-                    ),
-                   Row(
-                     children: [
-                      
-                       Text("Balance:"),Icon(Icons.currency_rupee, size: 15),
-                       Text(widget.bal_balance[index])
-                     ],
-                   ),],
-                ),
-               
-              ],
-            ),
-          );
-        }
+                         Text("Balance:"),Icon(Icons.currency_rupee, size: 15),
+                         Text(widget.bal_balance[index])
+                       ],
+                     ),],
+                  ),
+                 
+                ],
+              ),
+            );
+          }
+        ),
       ),
     );
   }

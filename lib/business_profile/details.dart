@@ -130,13 +130,13 @@ business_description_controller.text="";
       
       appBar: AppBar(
         backgroundColor: Colors.blue.shade100,
+        foregroundColor: Colors.blue.shade900,
         title: Center(child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.business, color: Colors.blue.shade900,size: 30,),
+            Icon(Icons.business,size: 30,),
             Text("BUSINESS PROFILE", style: TextStyle(fontSize:
-            20,
-            color: Colors.blue.shade900,
+            20
             )),
           ],
         ),),
