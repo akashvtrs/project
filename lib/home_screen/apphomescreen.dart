@@ -5,7 +5,7 @@ import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
 import 'package:final_project1/business_profile/details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 class Identities extends StatefulWidget {
   final String name_owner;
@@ -24,7 +24,26 @@ class Identities extends StatefulWidget {
 
 class _IdentitiesState extends State<Identities> {
   bool savedcustomers_bool=true;
+  double totalpayments=0.0;
+  double pendingpayment=0.0;
+  double companybalance=0.0;
   
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.amount_totalamount.forEach((item) {
+                        totalpayments+= double.parse(item);
+                      });
+                      print(totalpayments.toStringAsFixed(2));
+    widget.bal_balance.forEach((item) {
+      pendingpayment+= double.parse(item);
+    });
+    print(pendingpayment.toStringAsFixed(2));
+    companybalance=double.parse(totalpayments.toStringAsFixed(2))-double.parse(pendingpayment.toStringAsFixed(2));
+    print(companybalance.toStringAsFixed(2));
+    
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -83,13 +102,13 @@ class _IdentitiesState extends State<Identities> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text("Total No.of Customers:"),
+                child: Text("Total No.of Customers:${widget.name_customername.length}"),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text("Total Payments:"),
+                    Text("Total Payments:${totalpayments.toStringAsFixed(2)}"),
                     Icon(Icons.currency_rupee,color: Colors.black,
                     size: 20,
                     ),
@@ -100,7 +119,7 @@ class _IdentitiesState extends State<Identities> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text("Pending Payment:"),
+                    Text("Pending Payment:${pendingpayment.toStringAsFixed(2)}"),
                     Icon(Icons.currency_rupee,color: Colors.black,
                     size: 20,
                     ),
@@ -115,7 +134,7 @@ class _IdentitiesState extends State<Identities> {
                   children: [
                     Row(
                       children: [
-                        Text("Company's Acccount Balance:"),
+                        Text("Company's Acccount Balance:${companybalance.toStringAsFixed(2)}"),
                         Icon(Icons.currency_rupee,color: Colors.black,
                     size: 20,
                     ),
