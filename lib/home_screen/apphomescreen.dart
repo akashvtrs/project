@@ -24,7 +24,7 @@ class Identities extends StatefulWidget {
 }
 
 class _IdentitiesState extends State<Identities> {
-  bool savedcustomers_bool=true;
+  bool savedcustomers_bool=false;
   double totalpayments=0.0;
   double pendingpayment=0.0;
   double companybalance=0.0;
@@ -43,6 +43,9 @@ class _IdentitiesState extends State<Identities> {
     print(pendingpayment.toStringAsFixed(2));
     companybalance=double.parse(totalpayments.toStringAsFixed(2))-double.parse(pendingpayment.toStringAsFixed(2));
     print(companybalance.toStringAsFixed(2));
+    if (widget.name_customername.isNotEmpty) {
+                savedcustomers_bool = !savedcustomers_bool;
+              }
     
   }
   
@@ -68,7 +71,10 @@ class _IdentitiesState extends State<Identities> {
         InkWell(
           onTap: () {
             setState(() {
-              savedcustomers_bool = !savedcustomers_bool;
+              if (widget.name_customername.isNotEmpty) {
+                savedcustomers_bool = !savedcustomers_bool;
+              }
+              
             });
           },
           child: Padding(
@@ -232,8 +238,8 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return 
-    Container(
-      color: Colors.blue,
+    SizedBox(
+      
       height: 350,
       width: double.infinity,
       child: Scaffold(
