@@ -25,6 +25,7 @@ class Identities extends StatefulWidget {
 
 class _IdentitiesState extends State<Identities> {
   bool savedcustomers_bool=false;
+  bool nosavedcustomers_bool=true;
   double totalpayments=0.0;
   double pendingpayment=0.0;
   double companybalance=0.0;
@@ -45,6 +46,9 @@ class _IdentitiesState extends State<Identities> {
     print(companybalance.toStringAsFixed(2));
     if (widget.name_customername.isNotEmpty) {
                 savedcustomers_bool = !savedcustomers_bool;
+                nosavedcustomers_bool=false;
+              }else{
+                nosavedcustomers_bool=true;
               }
     
   }
@@ -98,90 +102,99 @@ class _IdentitiesState extends State<Identities> {
           ),
         ),
         Visibility(
+                visible: nosavedcustomers_bool,
+                child: Row(
+                  children: [
+                    Icon(Icons.error,
+                        color: Colors.red),
+                    Text("No items in cart",style: TextStyle(
+                      color: Colors.red
+                    ),),
+                  ],
+                ),
+              ),
+        Visibility(
           visible: savedcustomers_bool,
           child: AppHomeScreen(
             name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top:8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Total No.of Customers:${widget.name_customername.length}",style: TextStyle(
-                  fontWeight: FontWeight.bold
-                )),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Total No.of Customers:${widget.name_customername.length}",style: TextStyle(
+                fontWeight: FontWeight.bold
+              )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text("Total Payments:",style: TextStyle(
+                fontWeight: FontWeight.bold
+              )),
+                  Icon(Icons.currency_rupee_rounded,color: Colors.black,
+                  
+        
+                  ),
+                  Text(totalpayments.toStringAsFixed(2),style: TextStyle(
+                      fontWeight: FontWeight.bold
+                  ))
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text("Total Payments:",style: TextStyle(
-                  fontWeight: FontWeight.bold
-                )),
-                    Icon(Icons.currency_rupee,color: Colors.black,
-                    
-
-                    ),
-                    Text(totalpayments.toStringAsFixed(2),style: TextStyle(
-                        fontWeight: FontWeight.bold
-                    ))
-                  ],
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text("Pending Payment:",style: TextStyle(
+                fontWeight: FontWeight.bold
+              )),
+                  Icon(Icons.currency_rupee_rounded,color: Colors.black,
+                  
+                  ),
+                  Text(pendingpayment.toStringAsFixed(2),style: TextStyle(
+                      fontWeight: FontWeight.bold
+                  ))
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text("Pending Payment:",style: TextStyle(
-                  fontWeight: FontWeight.bold
-                )),
-                    Icon(Icons.currency_rupee,color: Colors.black,
-                    
-                    ),
-                    Text(pendingpayment.toStringAsFixed(2),style: TextStyle(
-                        fontWeight: FontWeight.bold
-                    ))
-                  ],
-                ),
-              ),
-                Divider(
-                  color: Color.fromARGB(255, 229, 223, 214),
-                )
-              ,
-              
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      children: [
-                        Text("Company's Account Balance:",style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          
-                        ),),
-                        Row(
-                          children: [
-                            
-                            Icon(Icons.currency_rupee,color: Colors.black,
-
+            ),
+              Divider(
+                color: Color.fromARGB(255, 229, 223, 214),
+              )
+            ,
+            
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    children: [
+                      Text("Company's Account Balance:",style: TextStyle(
+                        fontWeight: FontWeight.bold,
                         
-                        ),
-                        Text(companybalance.toStringAsFixed(2),style: TextStyle(
-                        fontWeight: FontWeight.bold
-                    )),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),),
+                      Row(
+                        children: [
+                          
+                          Icon(Icons.currency_rupee_rounded,color: Colors.black,
+        
+                      
+                      ),
+                      Text(companybalance.toStringAsFixed(2),style: TextStyle(
+                      fontWeight: FontWeight.bold
+                  )),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         )
       ],
     ),
@@ -277,14 +290,14 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                         Row(
                           children: [
                             
-                            Text("Total Amount:"),Icon(Icons.currency_rupee, size: 15),
+                            Text("Total Amount:"),Icon(Icons.currency_rupee_rounded, size: 15),
                             Text(widget.amount_totalamount[index])
                           ],
                         ),
                        Row(
                          children: [
                           
-                           Text("Balance:"),Icon(Icons.currency_rupee, size: 15),
+                           Text("Balance:"),Icon(Icons.currency_rupee_rounded, size: 15),
                            Text(widget.bal_balance[index])
                          ],
                        ),],

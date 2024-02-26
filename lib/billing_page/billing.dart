@@ -1,10 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print, avoid_function_literals_in_foreach_calls, must_be_immutable
 
 
+
+
 import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/listview_items.dart';
 import 'package:final_project1/home_screen/apphomescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 
 
@@ -56,7 +59,7 @@ class _BillingState extends State<Billing> {
   final map = {};
   bool isCheckeds = false;
   bool bool_cont = true;
-  bool bool_noitemsincart = false;
+  bool bool_noitemsincart = true;
   Color? discountcontainercolor=Colors.blueAccent;
 int _selectedIndex = 0; 
  
@@ -76,6 +79,7 @@ int _selectedIndex = 0;
  List list_amount_totalamount=[];
  List list_bal_balance=[];
   String balance = "0.00";
+  
    void save_customer() {
     list_name_customername.add(customername_controller.text);
     list_no_phoneno.add(phoneno_controller.text);
@@ -187,7 +191,9 @@ widget.itemtotalamount.forEach((item) {
   paidamount_controller.text="0.00";       
    balance = totalAmountForAllItems.toStringAsFixed(2);       
    if (widget.itemname.isEmpty) {
-     bool_noitemsincart=!bool_noitemsincart;
+     bool_noitemsincart=true;
+   }else{
+     bool_noitemsincart=false;
    }     
    list_name_customername=widget.add_list_name_customername;
    list_no_phoneno=widget.add_list_no_phoneno;
@@ -233,7 +239,7 @@ widget.itemtotalamount.forEach((item) {
                 child: TextField(
                     controller: customername_controller,
                     decoration: InputDecoration(
-                      labelText: "CUSTOMER ID",
+                      labelText: "Customer Name",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
@@ -244,47 +250,82 @@ widget.itemtotalamount.forEach((item) {
                 child: TextField(
                     controller: phoneno_controller,
                     decoration: InputDecoration(
-                      labelText: "PHONE NO",
+                      labelText: "Phone No",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
                     )),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      if (widget.itemname.isNotEmpty) {
-                        bool_cont = !bool_cont;
-                       
-                      }
+                padding: const EdgeInsets.only(bottom:8.0),
+                child: ElevatedButton(style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.red),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                  overlayColor: MaterialStateProperty.all(Colors.redAccent),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    )
+                  )
+                ),onPressed:additem_cl, child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.add_circle),
+                    Text("ADD ITEMS !!!"),
+                   
+                  ],
+                )),
+              ),
+
+             
+              InkWell(
+               
+                onTap: () {
+                  setState(() {
+                    if (widget.itemname.isNotEmpty) {
+                      bool_cont = !bool_cont;
+                      
                      
-                      
-                      
-                      
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade100,
-                      
-                      border: Border.all(color: Colors.blue.shade900),
-                      
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    ),
+                    }
+                   
                     
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        Icon(Icons.arrow_drop_down,
-                            color: Colors.blue.shade900),
-                        Text("Billed Items",style: TextStyle(
-                          color: Colors.blue.shade900
-                        ),),
-                      ],
-                    ),
+                    
+                    
+                  });
+                },
+                child: Container(
+                  
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade100,
+                    
+                    border: Border.all(color: Colors.blue.shade900),
+                    
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    
                   ),
+                  
+                  
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Icon(Icons.arrow_drop_down,
+                          color: Colors.blue.shade900),
+                      Text("Billed Items",style: TextStyle(
+                        color: Colors.blue.shade900
+                      ),),
+                    ],
+                  ),
+                ),
+              ),Visibility(
+                visible: bool_noitemsincart,
+                child: Row(
+                  children: [
+                    Icon(Icons.error,
+                        color: Colors.red),
+                    Text("No items in cart",style: TextStyle(
+                      color: Colors.red
+                    ),),
+                  ],
                 ),
               ),
               Visibility(
@@ -321,77 +362,78 @@ widget.itemtotalamount.forEach((item) {
 
         //   )
         // ListItems(itemnames:[widget.itemname.toString()]),
-           Padding(
-             padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
-             child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),color: Colors.pink,
-              ),
-              width: double.infinity,
-              height: 100,
-              
-              child: Column(
+         Column(
+           children: [
+             Padding(
+               padding: const EdgeInsets.all(8.0),
+               child: Row(
+                 children: [
+                   Text("Total No.of Items:",style: TextStyle(fontWeight: FontWeight.bold),),
+                   Icon(Icons.currency_rupee_rounded,color: Colors.black),
+                   Text(widget.itemquantity.length.toString(),style: TextStyle(fontWeight: FontWeight.bold)),
+                 ],
+               ),
+             ),Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
                 children: [
-                  Row(
-                    children: [
-                      Text("No.of Items:"),
-                      Text(widget.itemquantity.length.toString()),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text("Total discount amount:"),
-                      Text(totalDiscountForAllItems.toString()),
-                    ]
-                  ),
-                  Row(
-                    children: [
-                      Text("Total net amount:"),
-                      Text(totalNetTotalForAllItems.toString()),
-                    ]
-                  )
-                  
+                  Text("Total discount amount:",style: TextStyle(fontWeight: FontWeight.bold),),
+                  Icon(Icons.currency_rupee_rounded,color: Colors.black),
+                   Text(totalDiscountForAllItems.toString(),style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
-              )),
-           ),
-              ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.red,
-                      fixedSize: Size(300, 20)),
-                  onPressed: additem_cl,
-                  icon: Icon(Icons.add),
-                  label: Text("ADD ITEMS !!!!")),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
                 children: [
-                  Text("Total Amount"),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-
-                    ),
-                    width: 100,
+                  Text("Total net amount:",style: TextStyle(fontWeight: FontWeight.bold)),
+                    Icon(Icons.currency_rupee_rounded,color: Colors.black,),
+                     Text(totalNetTotalForAllItems.toString(),style: TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+           ],
+         ),
+         
+             Divider(
+                  color: Color.fromARGB(255, 229, 223, 214),
+                )
+              ,
+              
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text("Total Amount:",style: TextStyle(fontWeight: FontWeight.bold,
+                     
+                    ),),
+                    Icon(Icons.currency_rupee_rounded),
+                  SizedBox(
+                    
+                    width: 45,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                       
-                        Icon(Icons.currency_rupee, size: 15),
-                        Text(totalAmountForAllItems.toStringAsFixed(2)),
+                        
+                        Text(totalAmountForAllItems.toStringAsFixed(2),style: TextStyle(fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                          fontSize: 20
+                          
+                        )),
                       ],
                     ),
                   )
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Row(
                     children: [
                       Checkbox(
                           value: isCheckeds,
+                          activeColor: Colors.green, 
                           onChanged: (bool? value) {                            
                               setState(() {
                                 if (value == false) {
@@ -407,11 +449,17 @@ widget.itemtotalamount.forEach((item) {
                                 isCheckeds = value!;
                               });                 
                           }),
-                      Text("Received"),
+                      Text("Received:",style: TextStyle(fontWeight: FontWeight.bold,
+                      
+                        
+                      ),
+                      ),
+                       Icon(Icons.currency_rupee_rounded),
                     ],
                   ),
                   SizedBox(
-                    width: 100,
+                    width: 45,
+                    
                     child: TextField(
                       onChanged: (value) => {
                         setState(() {
@@ -421,38 +469,34 @@ widget.itemtotalamount.forEach((item) {
                           
                         })
                       },
+                      
                       controller: paidamount_controller,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.currency_rupee),
+                      style: TextStyle(color:Colors.green
+                      ,
+                        fontSize: 20
                       ),
+                      
                     ),
                   )
                 ],
               ),
-              Divider(
-                color: Colors.black,
-
-              ),
+              
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                        decoration: BoxDecoration(
-                          
-                          border: Border.all(),
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  
-                        ),
-                        width: 100,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                          
-                            Icon(Icons.currency_rupee, size: 15),
-                            Text(balance),
-                          ],
-                        ),
-                      ),
+                  Icon(Icons.currency_rupee_rounded),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                    
+                      
+                      Text(balance,style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold
+                      )),
+                    ],
+                  ),
                 ],
               ),
               
@@ -483,13 +527,7 @@ widget.itemtotalamount.forEach((item) {
       ),
     ],
   ),
-  floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color.fromRGBO(82, 170, 94, 1.0),
-          tooltip: 'Increment',
-          onPressed: (){},
-          child: const Icon(Icons.add, size: 28),
-          ),
+  
     );
   }
   

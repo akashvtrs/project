@@ -315,7 +315,7 @@ add_list_name_customername: widget.add_list_name_customername,
                             Text("Net total"),
                             Row(
                               children: [
-                                Icon(Icons.currency_rupee, size: 15),
+                                Icon(Icons.currency_rupee_rounded, size: 15),
                                 Text(nettotal),
                               ],
                             ),
@@ -390,7 +390,7 @@ add_list_name_customername: widget.add_list_name_customername,
                             Text("TOTAL AMOUNT"),
                             Row(
                               children: [
-                                Icon(Icons.currency_rupee, size: 15),
+                                Icon(Icons.currency_rupee_rounded, size: 15),
                                 Text(totalamount),
                               ],
                             ),
