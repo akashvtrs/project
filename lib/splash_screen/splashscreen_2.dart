@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'dart:async';
 
 import 'package:final_project1/business_profile/details.dart';
@@ -15,7 +17,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds:5), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -36,60 +38,65 @@ class _SplashScreen2State extends State<SplashScreen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Image.asset("assets/images/icon_template.png", width: 120),
-            const Column(
-              children: [
-                Text(
-                  "BUSINESS NAME",
-                  style: TextStyle(fontSize: 15),
-                ),
-                Text(
-                  "Description about business name",
-                  style: TextStyle(fontSize: 15),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset(
-              "assets/images/profile_picture.jpg",
-              height: 400,
-              width: 400,
-            ),
-            const Text("Owner Name"),
-            Container(
-              decoration: BoxDecoration(border: Border.all(color: Colors.red)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+           Row(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+               Image.asset("assets/images/app_icon.png", height: 50, width: 50),
+          Column(
+             children: [
+               Text(
+                    "Billing APP",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),Text(
+                "Customer Billing App For Business",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                )
+      
+              ),
+             ],
+           ),
+             ],
+           ),
+           
+              
+          Image.asset(
+            "assets/images/profile_picture.jpg",
+            height: 400,
+            width: 400,
+          ),
+          
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      Image.asset(
-                        "assets/images/secure.gif",
-                        height: 150,
-                        width: 150,
-                      ),
-                      const Text("100% SECURE"),
-                    ],
-                  ),
                   Image.asset(
-                    "assets/images/logo_icon.png",
+                    "assets/images/secure.gif",
                     height: 150,
                     width: 150,
                   ),
+                  const Text("100% SECURE",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      )
+                  ),
                 ],
               ),
-            )
-          ],
-        ),
+              Image.asset(
+                "assets/images/logo_icon.png",
+                height: 150,
+                width: 150,
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

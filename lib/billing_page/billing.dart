@@ -431,7 +431,7 @@ widget.itemtotalamount.forEach((item) {
                child: Row(
                  children: [
                    Text("Total No.of Items:",style: TextStyle(fontWeight: FontWeight.bold),),
-                   Icon(Icons.currency_rupee_rounded,color: Colors.black),
+                   
                    Text(widget.itemquantity.length.toString(),style: TextStyle(fontWeight: FontWeight.bold)),
                  ],
                ),

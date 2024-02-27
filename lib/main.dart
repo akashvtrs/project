@@ -22,16 +22,17 @@ class MyApp extends StatelessWidget {
         
       ),
       debugShowCheckedModeBanner: false,
-      home:  Details(
-        name_owner: " ",
-        name_Business: " ",
-        name_Address: " ",
-        name_Business_Description:"",
-        name_Email: " ",
-        name_Phone_No:"",
-        name_Pincode: "",
-        
-      ),
+      home:  Identities(name_owner: "", 
+      name_Business: "", name_Phone_No: "",
+       name_Email: "",
+        name_Address: "",
+         name_Pincode: "",
+          name_Business_Description:"",
+           name_customername: [],
+            no_phoneno: [], 
+            items_noofitems: [], 
+            amount_totalamount:[],
+             bal_balance: [])
     );
   }
 }

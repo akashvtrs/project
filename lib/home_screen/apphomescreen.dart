@@ -363,7 +363,7 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                       child: Visibility(
                         visible: delete_bool,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             ElevatedButton( 
                               style: ElevatedButton.styleFrom(
@@ -416,7 +416,39 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                                   Text("Delete",style: TextStyle(color: Colors.red),),
                                 ],
                               ),),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue.shade100
+                                ),
+                                onPressed: (){
+                                  setState(() {
+                                      widget.bal_balance[index]="0.00";
+                                      Identities(name_owner: widget.name_owner, 
+                                      name_Business: widget.name_Business,
+                                       name_Phone_No:widget.name_Phone_No, 
+                                       name_Email: widget.name_Email, 
+                                       name_Address: widget.name_Address,
+                                        name_Pincode: widget.name_Pincode, 
+                                        name_Business_Description: widget.name_Business_Description, 
+                                        name_customername: widget.name_customername, 
+                                        no_phoneno: widget.no_phoneno, 
+                                        items_noofitems: widget.items_noofitems, 
+                                        amount_totalamount: widget.amount_totalamount,
+                                         bal_balance: widget.bal_balance);
+
+                                  });
+                                },  
+                              
+                                child: Row(
+                                  children: [
+                                     Icon(Icons.verified,color: Colors.green.shade900,
+                                    size: 15,
+                                  ),
+                                    Text("paid",style: TextStyle(color: Colors.green.shade900),),
+                                  ],
+                                ))
                           ],
+
                         ),
                       ),
                     ),
