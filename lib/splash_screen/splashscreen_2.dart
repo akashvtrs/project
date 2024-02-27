@@ -1,18 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'dart:async';
-
 import 'package:final_project1/business_profile/details.dart';
 import 'package:flutter/material.dart';
-
-
 class SplashScreen2 extends StatefulWidget {
   const SplashScreen2({super.key});
-
   @override
   State<SplashScreen2> createState() => _SplashScreen2State();
 }
-
 class _SplashScreen2State extends State<SplashScreen2> {
   @override
   void initState() {
@@ -49,14 +42,16 @@ class _SplashScreen2State extends State<SplashScreen2> {
           Column(
              children: [
                Text(
-                    "Billing APP",
+                    "Billing App",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      color: Colors.blue.shade900,
                     ),
-                  ),Text(
+                  ), const Text(
                 "Customer Billing App For Business",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  
                 )
       
               ),

@@ -245,11 +245,13 @@ business_description_controller.text="";
                     suffixIcon: Icon(Icons.business_center,color:Colors.blue),
                       label: Text("Business Name"),
                       hintText: "Enter your Business Name",
-                       errorText:errorstring1.isEmpty ? 'Business name is required' : null,
-                      focusedBorder: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         borderSide: BorderSide(color: Colors.blue.shade900),
+                        
                       ),
+                       errorText:errorstring1.isEmpty ? 'Business name is required' : null,
+                     
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)))),
                 ),
@@ -268,11 +270,13 @@ business_description_controller.text="";
                       suffixIcon: Icon(Icons.person,color:Colors.blue),
                       label: Text("Manager Name"),
                       hintText: "Enter Business Manager Name",
-                      errorText:errorstring2.isEmpty ? 'Manager Name is required' : null,
-                      focusedBorder: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         borderSide: BorderSide(color: Colors.blue.shade900),
+                        
                       ),
+                      errorText:errorstring2.isEmpty ? 'Manager Name is required' : null,
+                   
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)))),
                 ),
@@ -292,11 +296,14 @@ business_description_controller.text="";
                       suffixIcon: Icon(Icons.phone,color:Colors.blue),
                       label: Text("Phone No"),
                       hintText: "Enter Phone No",
-                       errorText:errorstring3.isEmpty ? 'Phone No is required' : null,
-                      focusedBorder: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         borderSide: BorderSide(color: Colors.blue.shade900),
+                        
                       ),
+                      focusColor: Colors.purple,
+                       errorText:errorstring3.isEmpty ? 'Phone No is required' : null,
+                      
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)))),
                 ),
@@ -313,13 +320,18 @@ business_description_controller.text="";
                   decoration: InputDecoration(
                       suffixIcon: Icon(Icons.email,color:Colors.blue),
                       label: Text("Email"),
-                      hintText: "ex.,abc@gmail.com",
-                        errorText:errorstring4.isEmpty ? 'Email is required' : null,
-                      focusedBorder: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         borderSide: BorderSide(color: Colors.blue.shade900),
+
                       ),
+                      hintText: "ex.,abc@gmail.com",
+                      
+                      
+                        errorText:errorstring4.isEmpty ? 'Email is required' : null,
+                     
                       border: OutlineInputBorder(
+                        
                           borderRadius: BorderRadius.all(Radius.circular(8.0)))),
                 ),
               ),
@@ -336,11 +348,13 @@ business_description_controller.text="";
                       suffixIcon: Icon(Icons.location_on,color:Colors.blue),
                       label: Text("Address"),
                       hintText: "Enter Address",
-                      errorText:errorstring5.isEmpty ? 'Address is required' : null,
-                      focusedBorder: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         borderSide: BorderSide(color: Colors.blue.shade900),
+                        
                       ),
+                      errorText:errorstring5.isEmpty ? 'Address is required' : null,
+                     
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)))),
                 ),
@@ -360,11 +374,13 @@ business_description_controller.text="";
                       suffixIcon: Icon(Icons.pin,color:Colors.blue),
                       label: Text("Pincode"),
                       hintText: "Enter Pincode",
-                      errorText:errorstring6.isEmpty ? 'Pincode is required' : null,
-                      focusedBorder: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         borderSide: BorderSide(color: Colors.blue.shade900),
+                        
                       ),
+                      errorText:errorstring6.isEmpty ? 'Pincode is required' : null,
+                     
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)))),
                 ),
@@ -377,17 +393,21 @@ business_description_controller.text="";
                     errorstring7 = value;
                           });
                         },
+                        
                   controller: business_description_controller,
                   decoration: InputDecoration(
                       suffixIcon: Icon(Icons.description,color:Colors.blue),
                       label: Text("Business Description"),
                       hintText: "Enter Description",
-                       errorText:errorstring7.isEmpty ? 'Description is required' : null,
-                      
-                      focusedBorder: OutlineInputBorder(
+                      focusColor: Colors.purple,
+                      enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         borderSide: BorderSide(color: Colors.blue.shade900),
+                        
                       ),
+                       errorText:errorstring7.isEmpty ? 'Description is required' : null,
+                      
+                     
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)))),
                 ),

@@ -90,9 +90,7 @@ String errorstring='notnull';
       if (itemname_controller.text.isNotEmpty &&
           quantity_controller.text.isNotEmpty &&
           price_controller.text.isNotEmpty) {
-        // print(items);
-        // print(quantity);
-        // print(price);
+       
         int quantityvalue = 0;
         int pricevalue = 0;
 
@@ -211,13 +209,7 @@ void _onItemTapped(int index) {
     list_itemnettotal.add(nettotal);
     list_itemdiscountvaluecost.add(discountvaluecost);
     list_itemtotalamount.add(totalamount);
-    print(list_itemname);
-    print(list_itemquantity);
-    print(list_itemprice);
-    print(list_itemdiscount);
-    print(list_itemnettotal);
-    print(list_itemdiscountvaluecost);
-    print(list_itemtotalamount);
+
     
     AddItems(
       list_itemname,
@@ -244,7 +236,7 @@ add_list_name_customername: widget.add_list_name_customername,
         phoneno_cont: widget.phoneno_cont,
 
     );
-    print("called");
+  
     setState(() {
       itemname_controller.text = "";
       quantity_controller.text = "";
@@ -293,6 +285,11 @@ add_list_name_customername: widget.add_list_name_customername,
                   decoration: InputDecoration(
                     labelText: "Item Name",
                     hintText: "ex.,Chocolate Cake",
+                    focusColor: Colors.purple,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide: BorderSide(color: Colors.blue.shade900),
+                    ),
                     errorText:errorstring.isEmpty ? 'Item Name is required' : null,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -309,6 +306,11 @@ add_list_name_customername: widget.add_list_name_customername,
                   decoration: InputDecoration(
                     labelText: "No. of items",
                     hintText: "Numbers only,ex.,0,1,2...9",
+                    focusColor: Colors.purple,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide: BorderSide(color: Colors.blue.shade900),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.all(Radius.circular(8.0)),
@@ -324,6 +326,11 @@ add_list_name_customername: widget.add_list_name_customername,
                   decoration: InputDecoration(
                     labelText: "Cost",
                     hintText: "Numbers only,ex.,0,1,2...9",
+                    focusColor: Colors.purple,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide: BorderSide(color: Colors.blue.shade900),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.all(Radius.circular(8.0)),
@@ -380,8 +387,7 @@ add_list_name_customername: widget.add_list_name_customername,
                                       .toStringAsFixed(2);
                                   
                                   
-                                  print(totalamount);
-                                  print(discountvaluecost);
+                             
                                 } else {
                                   
                                   discountvaluecost = "0.00";
@@ -389,9 +395,15 @@ add_list_name_customername: widget.add_list_name_customername,
                               });
                             },
                             decoration: InputDecoration(
+                              
                                 
                                 labelText: "Discount",
                                 hintText: "Discount in %,ex.,0,1,2....9",
+                                focusColor: Colors.purple,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide: BorderSide(color: Colors.blue.shade900),
+                    ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(8.0)),
@@ -468,7 +480,7 @@ add_list_name_customername: widget.add_list_name_customername,
         unselectedIconTheme: IconThemeData(color: Colors.black),
          unselectedFontSize: 14.0,
         backgroundColor: Colors.blue.shade100,
-        currentIndex: _selectedIndex, //New
+        currentIndex: _selectedIndex,
   onTap:_onItemTapped, 
     items: const <BottomNavigationBarItem>[
       

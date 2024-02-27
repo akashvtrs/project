@@ -6,8 +6,6 @@ import 'package:final_project1/billing_page/billing.dart';
 import 'package:final_project1/business_profile/details.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/widgets.dart';
-
 
 class Identities extends StatefulWidget {
   final String name_owner;
@@ -42,18 +40,18 @@ class _IdentitiesState extends State<Identities> {
   
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     widget.amount_totalamount.forEach((item) {
                         totalpayments+= double.parse(item);
                       });
-                      print(totalpayments.toStringAsFixed(2));
+                      
     widget.bal_balance.forEach((item) {
       pendingpayment+= double.parse(item);
     });
-    print(pendingpayment.toStringAsFixed(2));
+   
     companybalance=double.parse(totalpayments.toStringAsFixed(2))-double.parse(pendingpayment.toStringAsFixed(2));
-    print(companybalance.toStringAsFixed(2));
+    
     if (widget.name_customername.isNotEmpty) {
                 savedcustomers_bool = !savedcustomers_bool;
                 nosavedcustomers_bool=false;
@@ -359,7 +357,7 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
               onTap: () {
                 setState(() {
                   delete_bool=!delete_bool;
-                  print(delete_bool.toString());
+                 
                 });
                 
               },

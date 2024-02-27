@@ -65,7 +65,7 @@ class _BillingState extends State<Billing> {
   TextEditingController paidamount_controller = TextEditingController();
 
 
-  final customername = <String>[]; // Creates growable list.
+  final customername = <String>[]; 
   final customerphone = <String>[];
   final map = {};
   bool isCheckeds = false;
@@ -102,11 +102,7 @@ int _selectedIndex = 0;
     list_items_noofitems.add(widget.itemquantity.length.toString());
     list_amount_totalamount.add(totalAmountForAllItems.toStringAsFixed(2));
     list_bal_balance.add(balance);
-    print(list_name_customername);
-    print(list_no_phoneno);
-    print(list_items_noofitems);
-    print(list_amount_totalamount);
-    print(list_bal_balance);
+  
     
     Navigator.push(
        context,MaterialPageRoute(builder:(context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business,
@@ -142,8 +138,7 @@ bal_balance:list_bal_balance
   additem_cl() {
     customername.add(customername_controller.text);
     customerphone.add(phoneno_controller.text);
-    print(customername);
-    print(customerphone);
+   
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => AddItems(
           widget.itemname,
@@ -171,16 +166,7 @@ widget.itemdiscountvaluecost,
         )));
   }
 
-  show() {
-   // Navigator.push(
-   //     context,
-   //     MaterialPageRoute(
-   //       builder: (context) => AddItems(),
-   //     ));
-        print(widget.itemdiscountvaluecost);
-        
-       
-}
+  
 void _onItemTapped(int index) {
   setState(() {
     _selectedIndex = index;
@@ -224,11 +210,11 @@ bal_balance:list_bal_balance
   @override
   void initState() {
     super.initState();
-   // finalamount_controller.text = widget.itemtotalamount;
+  
    widget.itemdiscountvaluecost.forEach((item) {
                         totalDiscountForAllItems += double.parse(item);
                       });
-                      print(totalDiscountForAllItems);
+                      
    widget.itemnettotal.forEach((item) {
   totalNetTotalForAllItems += double.parse(item);
 });
@@ -296,10 +282,11 @@ widget.itemtotalamount.forEach((item) {
                       labelText: "Customer Name",
                       hintText: "Enter Customer Name",
                        errorText:errorstring.isEmpty ? 'Customer Name is required' : null,
-                       focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
+                      focusColor: Colors.purple,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
@@ -320,10 +307,11 @@ widget.itemtotalamount.forEach((item) {
                       labelText: "Phone No",
                       hintText: "Enter Phone No",
                        errorText:errorstring2.isEmpty ? 'Phone No is required' : null,
-                       focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
+                      focusColor: Colors.purple,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
@@ -431,18 +419,7 @@ widget.itemtotalamount.forEach((item) {
                   ],
                 ),
               ),
-        //   ListViewItems(
-        //     itemname: widget.itemname,
-        //     itemquantity: widget.itemquantity,
-        //     itemprice: widget.itemprice,
-        //     itemdiscount: widget.itemdiscount,
-        //     itemnettotal: widget.itemnettotal,
-        //     itemdiscountvaluecost: widget.itemdiscountvaluecost,
-        //     itemtotalamount: widget.itemtotalamount,
-        //     
-
-        //   )
-        // ListItems(itemnames:[widget.itemname.toString()]),
+       
          Column(
            children: [
              Padding(
@@ -597,7 +574,7 @@ widget.itemtotalamount.forEach((item) {
         unselectedIconTheme: IconThemeData(color: Colors.black),
          unselectedFontSize: 14.0,
         backgroundColor: Colors.blue.shade100,
-        currentIndex: _selectedIndex, //New
+        currentIndex: _selectedIndex, 
   onTap:_onItemTapped, 
     items: const <BottomNavigationBarItem>[
       
@@ -635,11 +612,7 @@ widget.itemtotalamount.forEach((item) {
     
 
    
-    print(list_name_customername);
-    print(list_no_phoneno);
-    print(list_items_noofitems);
-    print(list_amount_totalamount);
-    print(list_bal_balance);
+  
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -663,17 +636,17 @@ widget.itemtotalamount.forEach((item) {
     setState(() {
     widget.itemname.clear();
     widget.itemquantity.clear();
-    print(widget.itemquantity);
+
     widget.itemprice.clear();
-    print(widget.itemprice);
+ 
     widget.itemdiscount.clear();
-    print(widget.itemdiscount);
+   
     widget.itemnettotal.clear();
-    print(widget.itemnettotal);
+ 
     widget.itemdiscountvaluecost.clear();
-    print(widget.itemdiscountvaluecost);
+    
     widget.itemtotalamount.clear();
-    print(widget.itemtotalamount);
+    
     totalAmountForAllItems = 0.00;
     totalDiscountForAllItems = 0.00;
     totalNetTotalForAllItems = 0.00;
