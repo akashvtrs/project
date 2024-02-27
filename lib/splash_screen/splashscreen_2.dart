@@ -19,7 +19,16 @@ class _SplashScreen2State extends State<SplashScreen2> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const Details(),
+            builder: (context) => const Details(
+              name_owner: "",
+              name_Business: "",
+              name_Phone_No: "",
+              name_Email: "",
+              name_Address: "",
+              name_Pincode: "",
+              name_Business_Description: "",
+              
+            ),
           ));
     });
   }

@@ -178,6 +178,7 @@ business_description_controller.text="";
               decoration: InputDecoration(
                 suffixIcon: Icon(Icons.business_center,color:Colors.blue),
                   label: Text("Business Name"),
+                  hintText: "Enter your Business Name",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -186,6 +187,7 @@ business_description_controller.text="";
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.person,color:Colors.blue),
                   label: Text("Manager Name"),
+                  hintText: "Enter Business Manager Name",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -194,6 +196,7 @@ business_description_controller.text="";
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.phone,color:Colors.blue),
                   label: Text("Phone No"),
+                  hintText: "Enter Phone No",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -202,6 +205,7 @@ business_description_controller.text="";
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.email,color:Colors.blue),
                   label: Text("Email"),
+                  hintText: "ex.,abc@gmail.com",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -210,6 +214,7 @@ business_description_controller.text="";
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.location_on,color:Colors.blue),
                   label: Text("Address"),
+                  hintText: "Enter Address",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -218,6 +223,7 @@ business_description_controller.text="";
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.pin,color:Colors.blue),
                   label: Text("Pincode"),
+                  hintText: "Enter Pincode",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -226,6 +232,7 @@ business_description_controller.text="";
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.description,color:Colors.blue),
                   label: Text("Business Description"),
+                  hintText: "Enter Description",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
