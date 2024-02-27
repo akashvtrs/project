@@ -77,6 +77,16 @@ String errorstring='notnull';
 
   void save_item_details() {
     setState(() {
+      if (price_controller.text.isEmpty) {
+          price_controller.text="0";
+      }
+      if (discount_controllers.text.isEmpty) {
+          discount_controllers.text="0";
+      }
+      if (quantity_controller.text.isEmpty) {
+          quantity_controller.text="0";
+      }
+      
       if (itemname_controller.text.isNotEmpty &&
           quantity_controller.text.isNotEmpty &&
           price_controller.text.isNotEmpty) {
@@ -189,23 +199,7 @@ void _onItemTapped(int index) {
     });
   }
 
- // void clear() {
- //
- //  
- //     Navigator.push(
- //       context,MaterialPageRoute(builder: (context) => ListItems(
- //
- //         itemname_l:list_itemname,
- //         itemquantity_l:              list_itemquantity,
- //         itemprice_l:                 list_itemprice,
- //         itemdiscount_l:              list_itemdiscount,
- //         itemnettotal_l:              list_itemnettotal,
- //         itemdiscountvaluecost_l:     list_itemdiscountvaluecost,
- //         itemtotalamount_l:           list_itemtotalamount,
- //       )),
- //     );
- // 
- // }
+
 
   void addnew() {
     setState(() {
@@ -279,170 +273,193 @@ add_list_name_customername: widget.add_list_name_customername,
         leading: Icon(Icons.shopping_cart),
         title: Center(child: Text("Add Items to customer")),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
           
-          children: [
-          
-          TextField(
-           
-              onChanged: (value) => {save_item_details(),setState(() {
-                errorstring = value;
-              })},
-              controller: itemname_controller,
-              maxLength: 16,
-              decoration: InputDecoration(
-                labelText: "Item Name",
-                hintText: "ex.,Chocolate Cake",
-                errorText:errorstring.isEmpty ? 'Item Name is required' : null,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                ),
-              )),
-          TextField(
-              onChanged: (value) => {save_item_details()},
-              controller: quantity_controller,
-              
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "No. of items",
-                hintText: "Numbers only,ex.,0,1,2...9",
-                border: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(8.0)),
-                ),
-              )),
-          TextField(
-              onChanged: (value) => {save_item_details()},
-              controller: price_controller,
-               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "Cost",
-                hintText: "Numbers only,ex.,0,1,2...9",
-                border: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(8.0)),
-                ),
-              )),
-               Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            
             children: [
-              Text("Net total:",style: TextStyle(
-                fontWeight: FontWeight.bold
-              ),),
-              Row(
-                children: [
-                  Icon(Icons.currency_rupee_rounded,color: Colors.black,),
-                  SizedBox(
-                    
-                    child: Text(nettotal,style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                    ),),
-                  ),
-                ],
-              ),
-            ],
-          ),
-              TextField(
-                        controller: discount_controllers,
-                         keyboardType: TextInputType.number,
-                         maxLength: 2,
-                        onChanged: (value) {
-                          
-                          setState(() {
-                            
-                           
-                            if (discount_controllers
-                                .text.isNotEmpty) {
-                                  
-                              int discountvalue = int.parse(
-                                  discount_controllers.text);
-                              discountvaluecost =
-                                  ((discountvalue / 100) *
-                                          double.parse(nettotal))
-                                      .toStringAsFixed(2);
-                              
-                              totalamount = (double.parse(
-                                          nettotal) -
-                                      double.parse(discountvaluecost))
-                                  .toStringAsFixed(2);
-                              
-                              
-                              print(totalamount);
-                              print(discountvaluecost);
-                            } else {
-                              
-                              discountvaluecost = "0.00";
-                            }
-                          });
-                        },
-                        decoration: InputDecoration(
-                            
-                            labelText: "Discount",
-                            hintText: "Discount in %,ex.,0,1,2....9",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(8.0)),
-                            ))),
-          
-         
-          
-          
-          
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Discount:",style: TextStyle(
-                fontWeight: FontWeight.bold
-
-              )),
-             
-               Row(
-                 children: [
-                  Icon(Icons.currency_rupee_rounded,color: Colors.black,),
-                   SizedBox(
-                     
-                     child: Text(discountvaluecost,style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.green
-                                       ),),
-                   ),
-                 ],
-               ),
-            ],
-          ),
-          Divider(
-             color: Color.fromARGB(255, 229, 223, 214),
-          )
-          ,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("TOTAL AMOUNT:",style: TextStyle(
-                fontWeight: FontWeight.bold
-          
-              )),
-              Row(
-                children: [
-                  Icon(Icons.currency_rupee_rounded,color: Colors.black,),
-                  SizedBox(
+            
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+               
+                  onChanged: (value) => {save_item_details(),setState(() {
+                    errorstring = value;
+                  })},
+                  controller: itemname_controller,
+                  maxLength: 16,
+                  decoration: InputDecoration(
+                    labelText: "Item Name",
+                    hintText: "ex.,Chocolate Cake",
+                    errorText:errorstring.isEmpty ? 'Item Name is required' : null,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    ),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                  onChanged: (value) => {save_item_details()},
+                  controller: quantity_controller,
                   
-                    child: Text(totalamount,style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.red
-          
-                    ),),
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: "No. of items",
+                    hintText: "Numbers only,ex.,0,1,2...9",
+                    border: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(8.0)),
+                    ),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                  onChanged: (value) => {save_item_details()},
+                  controller: price_controller,
+                   keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: "Cost",
+                    hintText: "Numbers only,ex.,0,1,2...9",
+                    border: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(8.0)),
+                    ),
+                  )),
+            ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Row(
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: [
+                                 Text("Net total:",style: TextStyle(
+                    fontWeight: FontWeight.bold
+                                 ),),
+                                 Row(
+                    children: [
+                      Icon(Icons.currency_rupee_rounded,color: Colors.black,),
+                      SizedBox(
+                        width: 100,
+                        child: Text(nettotal,style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20
+                        ),),
+                      ),
+                    ],
+                                 ),
+                               ],
+                             ),
+                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                            controller: discount_controllers,
+                             keyboardType: TextInputType.number,
+                             
+                            onChanged: (value) {
+                              
+                              setState(() {
+                                
+                               
+                                if (discount_controllers
+                                    .text.isNotEmpty) {
+                                      
+                                  int discountvalue = int.parse(
+                                      discount_controllers.text);
+                                  discountvaluecost =
+                                      ((discountvalue / 100) *
+                                              double.parse(nettotal))
+                                          .toStringAsFixed(2);
+                                  
+                                  totalamount = (double.parse(
+                                              nettotal) -
+                                          double.parse(discountvaluecost))
+                                      .toStringAsFixed(2);
+                                  
+                                  
+                                  print(totalamount);
+                                  print(discountvaluecost);
+                                } else {
+                                  
+                                  discountvaluecost = "0.00";
+                                }
+                              });
+                            },
+                            decoration: InputDecoration(
+                                
+                                labelText: "Discount",
+                                hintText: "Discount in %,ex.,0,1,2....9",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(8.0)),
+                                ))),
+                ),
+            
+           
+            
+            
+            
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Discount:",style: TextStyle(
+                    fontWeight: FontWeight.bold
+              
+                  )),
+                 
+                   Row(
+                     children: [
+                      Icon(Icons.currency_rupee_rounded,color: Colors.black,),
+                       SizedBox(
+                         width: 100,
+                         child: Text(discountvaluecost,style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.green
+                                           ),),
+                       ),
+                     ],
+                   ),
+                ],
+              ),
+            ),
+            Divider(
+               color: Color.fromARGB(255, 229, 223, 214),
+            )
+            ,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("TOTAL AMOUNT:",style: TextStyle(
+                    fontWeight: FontWeight.bold
+              
+                  )),
+                  Row(
+                    children: [
+                      Icon(Icons.currency_rupee_rounded,color: Colors.black,),
+                      SizedBox(
+                        width: 100,
+                        child: Text(totalamount,style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.red
+              
+                        ),),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          )
-        ]),
+            )
+          ]),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.red,

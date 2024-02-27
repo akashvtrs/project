@@ -543,6 +543,7 @@ widget.itemtotalamount.forEach((item) {
                     
                     child: TextField(
                        keyboardType: TextInputType.number,
+                       maxLength: 10,
                       onChanged: (value) => {
                         setState(() {
                           if (paidamount_controller.text.isNotEmpty) {

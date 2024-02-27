@@ -239,6 +239,7 @@ business_description_controller.text="";
                         errorstring1 = value;
                             });
                           },
+                          maxLength: 20,
                   controller: business_name_controller,
                   decoration: InputDecoration(
                     suffixIcon: Icon(Icons.business_center,color:Colors.blue),
@@ -261,6 +262,7 @@ business_description_controller.text="";
                     errorstring2 = value;
                           });
                         },
+                        maxLength: 20,
                   controller: owner_name_controller,
                   decoration: InputDecoration(
                       suffixIcon: Icon(Icons.person,color:Colors.blue),

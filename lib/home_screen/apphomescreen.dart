@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, non_constant_identifier_names, unused_import, prefer_const_literals_to_create_immutables, avoid_web_libraries_in_flutter
+// ignore_for_file: prefer_const_constructors, must_be_immutable, non_constant_identifier_names, unused_import, prefer_const_literals_to_create_immutables, avoid_web_libraries_in_flutter, unnecessary_string_interpolations
 
 import 'dart:js_util';
 import 'package:final_project1/billing_page/additems.dart';
@@ -97,8 +97,9 @@ class _IdentitiesState extends State<Identities> {
             Column(
             
               children: [
-                Text("${widget.name_Business} Payments "),
-                Text("--${widget.name_owner}"),
+                Text("${widget.name_Business}",overflow: TextOverflow.ellipsis,
+                      ),
+                Text("-${widget.name_owner}"),
               ],
             ),
           ],
@@ -362,22 +363,27 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                     Text("Phone No: ${widget.no_phoneno[index]}"),
                     Text("Purchased No. of Items: ${widget.items_noofitems[index]}"),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  
                       children: [
-                        Row(
+                        Text("Total Amount:"),Icon(Icons.currency_rupee_rounded, size: 15),
+                        Text(widget.amount_totalamount[index]),
+                       ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Column(
                           children: [
-                            
-                            Text("Total Amount:"),Icon(Icons.currency_rupee_rounded, size: 15),
-                            Text(widget.amount_totalamount[index])
+                            Row(
+                              children: [
+                                Text("Balance:"),Icon(Icons.currency_rupee_rounded, size: 15),
+                              ],
+                            ),
+                            Text(widget.bal_balance[index]),
                           ],
                         ),
-                       Row(
-                         children: [
-                          
-                           Text("Balance:"),Icon(Icons.currency_rupee_rounded, size: 15),
-                           Text(widget.bal_balance[index])
-                         ],
-                       ),],
+                       
+                      ]
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 4.0,bottom: 4.0),

@@ -133,9 +133,9 @@ class _ListItemsState extends State<ListItems> {
                                   width: 100,
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.end,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text("cost"),
+                                      Text("Net total"),
                                       Text(":"),
                                     ],
                                   ),
@@ -152,7 +152,12 @@ class _ListItemsState extends State<ListItems> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text("Discount(${widget.itemdiscount_l[index]}%)"),
+                                      Column(
+                                        children: [
+                                          Text("Discount"),
+                                          Text("(${widget.itemdiscount_l[index]}%)"),
+                                        ],
+                                      ),
                                       Text(":"),
                                     ],
                                   ),
