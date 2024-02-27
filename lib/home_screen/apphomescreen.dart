@@ -62,9 +62,19 @@ class _IdentitiesState extends State<Identities> {
         backgroundColor: Colors.blue.shade100,
         foregroundColor: Colors.blue.shade900,
         leading:  Icon(Icons.home),
-        title: Center(
-          child: Text("VMK Enterprises Payments "),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+            
+              children: [
+                Text("${widget.name_Business} Payments "),
+                Text("--${widget.name_owner}"),
+              ],
+            ),
+          ],
         ),
+        
       ),
   body: Padding(
     padding: const EdgeInsets.all(8.0),
