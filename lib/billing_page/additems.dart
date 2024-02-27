@@ -284,9 +284,10 @@ add_list_name_customername: widget.add_list_name_customername,
           TextField(
               onChanged: (value) => {save_item_details()},
               controller: quantity_controller,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: "No. of items",
-                hintText: "Only 0-9 allowed,ex., 5",
+                hintText: "Numbers only,ex.,0,1,2...9",
                 border: OutlineInputBorder(
                   borderRadius:
                       BorderRadius.all(Radius.circular(8.0)),
@@ -295,9 +296,10 @@ add_list_name_customername: widget.add_list_name_customername,
           TextField(
               onChanged: (value) => {save_item_details()},
               controller: price_controller,
+               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: "Cost",
-                hintText: "only 0-9 allowed,ex., 100",
+                hintText: "Numbers only,ex.,0,1,2...9",
                 border: OutlineInputBorder(
                   borderRadius:
                       BorderRadius.all(Radius.circular(8.0)),
@@ -325,6 +327,7 @@ add_list_name_customername: widget.add_list_name_customername,
           ),
               TextField(
                         controller: discount_controllers,
+                         keyboardType: TextInputType.number,
                         onChanged: (value) {
                           
                           setState(() {
@@ -357,7 +360,7 @@ add_list_name_customername: widget.add_list_name_customername,
                         decoration: InputDecoration(
                             
                             labelText: "Discount",
-                            hintText: "Discount in %,ex., 10",
+                            hintText: "Discount in %,ex.,0,1,2....9",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                   Radius.circular(8.0)),

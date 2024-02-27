@@ -148,6 +148,7 @@ business_description_controller.text="";
 
     });
   }
+  String errorstring = '';
  
 
   @override
@@ -174,11 +175,21 @@ business_description_controller.text="";
           children: [
             
             TextField(
+              onChanged: (value) {
+    setState(() {
+      errorstring = value;
+    });
+  },
               controller: business_name_controller,
               decoration: InputDecoration(
                 suffixIcon: Icon(Icons.business_center,color:Colors.blue),
                   label: Text("Business Name"),
                   hintText: "Enter your Business Name",
+                   errorText:errorstring.isEmpty ? 'Business name is required' : null,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -188,15 +199,26 @@ business_description_controller.text="";
                   suffixIcon: Icon(Icons.person,color:Colors.blue),
                   label: Text("Manager Name"),
                   hintText: "Enter Business Manager Name",
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
               controller: phone_no_controller,
+               keyboardType: TextInputType.number,
+               maxLength: 10,
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.phone,color:Colors.blue),
                   label: Text("Phone No"),
                   hintText: "Enter Phone No",
+                  
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -206,6 +228,10 @@ business_description_controller.text="";
                   suffixIcon: Icon(Icons.email,color:Colors.blue),
                   label: Text("Email"),
                   hintText: "ex.,abc@gmail.com",
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -215,15 +241,25 @@ business_description_controller.text="";
                   suffixIcon: Icon(Icons.location_on,color:Colors.blue),
                   label: Text("Address"),
                   hintText: "Enter Address",
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
               controller: pincode_controller,
+               keyboardType: TextInputType.number,
+               maxLength: 6,
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.pin,color:Colors.blue),
                   label: Text("Pincode"),
                   hintText: "Enter Pincode",
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
@@ -233,6 +269,11 @@ business_description_controller.text="";
                   suffixIcon: Icon(Icons.description,color:Colors.blue),
                   label: Text("Business Description"),
                   hintText: "Enter Description",
+                  
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),

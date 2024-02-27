@@ -4,7 +4,6 @@ import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
 import 'package:final_project1/business_profile/details.dart';
 import 'package:final_project1/home_screen/apphomescreen.dart';
-import 'package:final_project1/splash_screen/splashscreen_1.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +22,16 @@ class MyApp extends StatelessWidget {
         
       ),
       debugShowCheckedModeBanner: false,
-      home:  SplashScreen1(),
+      home:  Details(
+        name_owner: " ",
+        name_Business: " ",
+        name_Address: " ",
+        name_Business_Description:"",
+        name_Email: " ",
+        name_Phone_No:"",
+        name_Pincode: "",
+        
+      ),
     );
   }
 }

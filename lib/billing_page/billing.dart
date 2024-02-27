@@ -90,7 +90,8 @@ int _selectedIndex = 0;
  List list_amount_totalamount=[];
  List list_bal_balance=[];
   String balance = "0.00";
-  
+    String errorstring = '';
+    String errorstring2 = '';
    void save_customer() {
     list_name_customername.add(customername_controller.text);
     list_no_phoneno.add(phoneno_controller.text);
@@ -266,9 +267,20 @@ widget.itemtotalamount.forEach((item) {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: TextField(
+                   onChanged: (value) {
+    setState(() {
+      errorstring = value;
+    });
+  },
                     controller: customername_controller,
                     decoration: InputDecoration(
                       labelText: "Customer Name",
+                      hintText: "Enter Customer Name",
+                       errorText:errorstring.isEmpty ? 'Business name is required' : null,
+                       focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
@@ -277,9 +289,22 @@ widget.itemtotalamount.forEach((item) {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: TextField(
+                   onChanged: (value) {
+    setState(() {
+      errorstring2 = value;
+    });
+  },
+                   keyboardType: TextInputType.number,
+                    maxLength: 10,
                     controller: phoneno_controller,
                     decoration: InputDecoration(
                       labelText: "Phone No",
+                      hintText: "Enter Phone No",
+                       errorText:errorstring2.isEmpty ? 'Business name is required' : null,
+                       focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    borderSide: BorderSide(color: Colors.blue.shade900),
+                  ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
@@ -498,6 +523,7 @@ widget.itemtotalamount.forEach((item) {
                     width: 100,
                     
                     child: TextField(
+                       keyboardType: TextInputType.number,
                       onChanged: (value) => {
                         setState(() {
                           if (paidamount_controller.text.isNotEmpty) {
