@@ -423,7 +423,9 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                                 onPressed: (){
                                   setState(() {
                                       widget.bal_balance[index]="0.00";
-                                      Identities(name_owner: widget.name_owner, 
+                                      Navigator.push(context, 
+                                      MaterialPageRoute(
+                                        builder: (context) => Identities(name_owner: widget.name_owner, 
                                       name_Business: widget.name_Business,
                                        name_Phone_No:widget.name_Phone_No, 
                                        name_Email: widget.name_Email, 
@@ -434,8 +436,11 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                                         no_phoneno: widget.no_phoneno, 
                                         items_noofitems: widget.items_noofitems, 
                                         amount_totalamount: widget.amount_totalamount,
-                                         bal_balance: widget.bal_balance);
+                                         bal_balance: widget.bal_balance)
 
+                                      )
+                                      );
+                                      
                                   });
                                 },  
                               
