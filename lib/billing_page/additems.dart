@@ -56,6 +56,7 @@ List list_itemnettotal = [];
 List list_itemdiscountvaluecost = [];
 List list_itemtotalamount = [];
 int _selectedIndex = 0; 
+String errorstring='';
 
   @override
   void initState() {
@@ -272,11 +273,15 @@ add_list_name_customername: widget.add_list_name_customername,
           children: [
           
           TextField(
-              onChanged: (value) => {save_item_details()},
+           
+              onChanged: (value) => {save_item_details(),setState(() {
+                errorstring = value;
+              })},
               controller: itemname_controller,
               decoration: InputDecoration(
                 labelText: "Item Name",
                 hintText: "ex.,Chocolate Cake",
+                errorText:errorstring.isEmpty ? 'Business name is required' : null,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 ),
@@ -328,6 +333,7 @@ add_list_name_customername: widget.add_list_name_customername,
               TextField(
                         controller: discount_controllers,
                          keyboardType: TextInputType.number,
+                         maxLength: 2,
                         onChanged: (value) {
                           
                           setState(() {
