@@ -5,6 +5,7 @@ import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
 import 'package:final_project1/business_profile/details.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter/widgets.dart';
 
 
@@ -36,6 +37,8 @@ class _IdentitiesState extends State<Identities> {
   double totalpayments=0.0;
   double pendingpayment=0.0;
   double companybalance=0.0;
+
+  bool floatingboolvalue=true;
   
   @override
   void initState() {
@@ -103,151 +106,144 @@ class _IdentitiesState extends State<Identities> {
         
         
       ),
-  body: Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Column(
-      children: [
-        
-        
-        
-        InkWell(
-          onTap: () {
-            setState(() {
-              if (widget.name_customername.isNotEmpty) {
-                savedcustomers_bool = !savedcustomers_bool;
-              }
-              
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(bottom:8.0),
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.blue.shade100,
-                border: Border.all(color: Colors.blue.shade900),
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.arrow_drop_down,color: Colors.blue.shade900),
-                  Text("Saved Customers",style: TextStyle(color: Colors.blue.shade900,
-                    
-                  ),),
-                ],
-              )),
-          ),
-        ),
-        Visibility(
-                visible: nosavedcustomers_bool,
+  body: SingleChildScrollView(
+  
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          
+          
+          
+          InkWell(
+            onTap: () {
+              setState(() {
+                if (widget.name_customername.isNotEmpty) {
+                  savedcustomers_bool = !savedcustomers_bool;
+                }
+                
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(bottom:8.0),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade100,
+                  border: Border.all(color: Colors.blue.shade900),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                ),
                 child: Row(
                   children: [
-                    Icon(Icons.error,
-                        color: Colors.red),
-                    Text("No items in cart",style: TextStyle(
-                      color: Colors.red
+                    Icon(Icons.arrow_drop_down,color: Colors.blue.shade900),
+                    Text("Saved Customers",style: TextStyle(color: Colors.blue.shade900,
+                      
                     ),),
+                  ],
+                )),
+            ),
+          ),
+          Visibility(
+                  visible: nosavedcustomers_bool,
+                  child: Row(
+                    children: [
+                      Icon(Icons.error,
+                          color: Colors.red),
+                      Text("No items in cart",style: TextStyle(
+                        color: Colors.red
+                      ),),
+                    ],
+                  ),
+                ),
+          Visibility(
+            visible: savedcustomers_bool,
+            child: AppHomeScreen(
+    
+                
+                name_Phone_No: widget.name_Phone_No,name_Email: widget.name_Email,name_Address: widget.name_Address,name_Pincode: widget.name_Pincode,name_Business_Description: widget.name_Business_Description,
+              name_Business: widget.name_Business,name_owner: widget.name_owner,name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Total No.of Customers:${widget.name_customername.length}",style: TextStyle(
+                  fontWeight: FontWeight.bold
+                )),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text("Total Payments:",style: TextStyle(
+                  fontWeight: FontWeight.bold
+                )),
+                    Icon(Icons.currency_rupee_rounded,color: Colors.black,
+                    
+          
+                    ),
+                    Text(totalpayments.toStringAsFixed(2),style: TextStyle(
+                        fontWeight: FontWeight.bold
+                    ))
                   ],
                 ),
               ),
-        Visibility(
-          visible: savedcustomers_bool,
-          child: AppHomeScreen(
-
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text("Pending Payment:",style: TextStyle(
+                  fontWeight: FontWeight.bold
+                )),
+                    Icon(Icons.currency_rupee_rounded,color: Colors.black,
+                    
+                    ),
+                    Text(pendingpayment.toStringAsFixed(2),style: TextStyle(
+                        fontWeight: FontWeight.bold
+                    ))
+                  ],
+                ),
+              ),
+                Divider(
+                  color: Color.fromARGB(255, 229, 223, 214),
+                )
+              ,
               
-              name_Phone_No: widget.name_Phone_No,name_Email: widget.name_Email,name_Address: widget.name_Address,name_Pincode: widget.name_Pincode,name_Business_Description: widget.name_Business_Description,
-            name_Business: widget.name_Business,name_owner: widget.name_owner,name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
-          ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Total No.of Customers:${widget.name_customername.length}",style: TextStyle(
-                fontWeight: FontWeight.bold
-              )),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text("Total Payments:",style: TextStyle(
-                fontWeight: FontWeight.bold
-              )),
-                  Icon(Icons.currency_rupee_rounded,color: Colors.black,
-                  
-        
-                  ),
-                  Text(totalpayments.toStringAsFixed(2),style: TextStyle(
-                      fontWeight: FontWeight.bold
-                  ))
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text("Pending Payment:",style: TextStyle(
-                fontWeight: FontWeight.bold
-              )),
-                  Icon(Icons.currency_rupee_rounded,color: Colors.black,
-                  
-                  ),
-                  Text(pendingpayment.toStringAsFixed(2),style: TextStyle(
-                      fontWeight: FontWeight.bold
-                  ))
-                ],
-              ),
-            ),
-              Divider(
-                color: Color.fromARGB(255, 229, 223, 214),
-              )
-            ,
-            
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Column(
-                    children: [
-                      Text("Company's Account Balance:",style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        
-                      ),),
-                      Row(
-                        children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      children: [
+                        Text("Company's Account Balance:",style: TextStyle(
+                          fontWeight: FontWeight.bold,
                           
-                          Icon(Icons.currency_rupee_rounded,color: Colors.black,
-        
-                      
-                      ),
-                      Text(companybalance.toStringAsFixed(2),style: TextStyle(
-                      fontWeight: FontWeight.bold
-                  )),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                        ),),
+                        Row(
+                          children: [
+                            
+                            Icon(Icons.currency_rupee_rounded,color: Colors.black,
+          
+                        
+                        ),
+                        Text(companybalance.toStringAsFixed(2),style: TextStyle(
+                        fontWeight: FontWeight.bold
+                    )),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        )
-      ],
-    ),
-  ),
-     floatingActionButtonLocation:FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        label: Text("Add New Customer"),
-        icon: Icon(Icons.person_add),
-        backgroundColor: Colors.blue.shade900,
-        foregroundColor: Colors.white,
-        
-        onPressed: () {
-          Navigator.push(
+            ],
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => Billing(
@@ -275,9 +271,34 @@ class _IdentitiesState extends State<Identities> {
                   
                 ),
               ));
-        },
-        
+            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all( Colors.blue.shade900),
+              foregroundColor: MaterialStateProperty.all(Colors.white),
+              overlayColor: MaterialStateProperty.all(Colors.blue.shade100),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                )
+                
+              )
+            ),
+            
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.person_add),
+                Text("Add New Customer"),
+              ],
+            )
+          ),
+        ],
       ),
+    ),
+  ),
+  
+
+     
     );
   }
   

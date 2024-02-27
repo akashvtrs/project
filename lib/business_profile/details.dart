@@ -117,17 +117,27 @@ void save_pass() {
       bal_balance:[]),
                           ));
                       }
-                      if (business_name_controller.text.isEmpty || owner_name_controller.text.isEmpty 
-      || phone_no_controller.text.isEmpty || email_controller.text.isEmpty || address_controller.text.isEmpty || pincode_controller.text.isEmpty
-      || business_description_controller.text.isEmpty) {
-        errorstring1='';
+                      if (business_name_controller.text.isEmpty ) {
+        errorstring1=''; 
+      }
+      if (owner_name_controller.text.isEmpty ) {
         errorstring2='';
+      }
+      if (phone_no_controller.text.isEmpty ) {
         errorstring3='';
-        errorstring4='';
-        errorstring5='';
-        errorstring6='';
-        errorstring7='';
 
+      }
+      if (email_controller.text.isEmpty ) {
+        errorstring4='';
+      }
+      if (address_controller.text.isEmpty ) {
+        errorstring5='';
+      }
+      if (pincode_controller.text.isEmpty ) {
+        errorstring6='';
+      }
+      if (business_description_controller.text.isEmpty ) {
+        errorstring7='';
       }
   });
                      
@@ -147,18 +157,29 @@ void save_pass() {
       Pincode = pincode_controller.text;
       Business_Description = business_description_controller.text;
       }
-      if (business_name_controller.text.isEmpty || owner_name_controller.text.isEmpty 
-      || phone_no_controller.text.isEmpty || email_controller.text.isEmpty || address_controller.text.isEmpty || pincode_controller.text.isEmpty
-      || business_description_controller.text.isEmpty) {
-        errorstring1='';
-        errorstring2='';
-        errorstring3='';
-        errorstring4='';
-        errorstring5='';
-        errorstring6='';
-        errorstring7='';
-        
+      if (business_name_controller.text.isEmpty ) {
+        errorstring1=''; 
       }
+      if (owner_name_controller.text.isEmpty ) {
+        errorstring2='';
+      }
+      if (phone_no_controller.text.isEmpty ) {
+        errorstring3='';
+
+      }
+      if (email_controller.text.isEmpty ) {
+        errorstring4='';
+      }
+      if (address_controller.text.isEmpty ) {
+        errorstring5='';
+      }
+      if (pincode_controller.text.isEmpty ) {
+        errorstring6='';
+      }
+      if (business_description_controller.text.isEmpty ) {
+        errorstring7='';
+      }
+
       
     });
   }
@@ -203,152 +224,175 @@ business_description_controller.text="";
           ],
         ),),
       ),
-      body: Padding(
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
             
-            TextField(
-              onChanged: (value) {
-    setState(() {
-      errorstring1 = value;
-    });
-  },
-              controller: business_name_controller,
-              decoration: InputDecoration(
-                suffixIcon: Icon(Icons.business_center,color:Colors.blue),
-                  label: Text("Business Name"),
-                  hintText: "Enter your Business Name",
-                   errorText:errorstring1.isEmpty ? 'Business name is required' : null,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)))),
-            ),
-            TextField(
-               onChanged: (value) {
-    setState(() {
-      errorstring2 = value;
-    });
-  },
-              controller: owner_name_controller,
-              decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.person,color:Colors.blue),
-                  label: Text("Manager Name"),
-                  hintText: "Enter Business Manager Name",
-                  errorText:errorstring2.isEmpty ? 'Manager Name is required' : null,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)))),
-            ),
-            TextField(
-               onChanged: (value) {
-    setState(() {
-      errorstring3= value;
-    });
-  },
-              controller: phone_no_controller,
-               keyboardType: TextInputType.number,
-               maxLength: 10,
-              decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.phone,color:Colors.blue),
-                  label: Text("Phone No"),
-                  hintText: "Enter Phone No",
-                   errorText:errorstring3.isEmpty ? 'Phone No is required' : null,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)))),
-            ),
-            TextField(
-                onChanged: (value) {
-    setState(() {
-      errorstring4 = value;
-    });
-  },
-              controller: email_controller,
-              decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.email,color:Colors.blue),
-                  label: Text("Email"),
-                  hintText: "ex.,abc@gmail.com",
-                    errorText:errorstring4.isEmpty ? 'Email is required' : null,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)))),
-            ),
-            TextField(
-               onChanged: (value) {
-    setState(() {
-      errorstring5 = value;
-    });
-  },
-              controller: address_controller,
-              decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.location_on,color:Colors.blue),
-                  label: Text("Address"),
-                  hintText: "Enter Address",
-                  errorText:errorstring5.isEmpty ? 'Address is required' : null,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)))),
-            ),
-            TextField(
-              onChanged: (value) {
-    setState(() {
-      errorstring6 = value;
-    });
-  },
-              controller: pincode_controller,
-               keyboardType: TextInputType.number,
-               maxLength: 6,
-              decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.pin,color:Colors.blue),
-                  label: Text("Pincode"),
-                  hintText: "Enter Pincode",
-                  errorText:errorstring6.isEmpty ? 'Pincode is required' : null,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)))),
-            ),
-            TextField(
-               onChanged: (value) {
-    setState(() {
-      errorstring7 = value;
-    });
-  },
-              controller: business_description_controller,
-              decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.description,color:Colors.blue),
-                  label: Text("Business Description"),
-                  hintText: "Enter Description",
-                   errorText:errorstring7.isEmpty ? 'Description is required' : null,
-                  
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    borderSide: BorderSide(color: Colors.blue.shade900),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)))),
-            ),
-           
-          ],
+            children: [
+              
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value) {
+                            setState(() {
+                        errorstring1 = value;
+                            });
+                          },
+                  controller: business_name_controller,
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.business_center,color:Colors.blue),
+                      label: Text("Business Name"),
+                      hintText: "Enter your Business Name",
+                       errorText:errorstring1.isEmpty ? 'Business name is required' : null,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                   onChanged: (value) {
+                          setState(() {
+                    errorstring2 = value;
+                          });
+                        },
+                  controller: owner_name_controller,
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.person,color:Colors.blue),
+                      label: Text("Manager Name"),
+                      hintText: "Enter Business Manager Name",
+                      errorText:errorstring2.isEmpty ? 'Manager Name is required' : null,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                   onChanged: (value) {
+                          setState(() {
+                    errorstring3= value;
+                          });
+                        },
+                  controller: phone_no_controller,
+                   keyboardType: TextInputType.number,
+                   maxLength: 10,
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.phone,color:Colors.blue),
+                      label: Text("Phone No"),
+                      hintText: "Enter Phone No",
+                       errorText:errorstring3.isEmpty ? 'Phone No is required' : null,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                    onChanged: (value) {
+                          setState(() {
+                    errorstring4 = value;
+                          });
+                        },
+                  controller: email_controller,
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.email,color:Colors.blue),
+                      label: Text("Email"),
+                      hintText: "ex.,abc@gmail.com",
+                        errorText:errorstring4.isEmpty ? 'Email is required' : null,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                   onChanged: (value) {
+                          setState(() {
+                    errorstring5 = value;
+                          });
+                        },
+                  controller: address_controller,
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.location_on,color:Colors.blue),
+                      label: Text("Address"),
+                      hintText: "Enter Address",
+                      errorText:errorstring5.isEmpty ? 'Address is required' : null,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value) {
+                          setState(() {
+                    errorstring6 = value;
+                          });
+                        },
+                  controller: pincode_controller,
+                   keyboardType: TextInputType.number,
+                   maxLength: 6,
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.pin,color:Colors.blue),
+                      label: Text("Pincode"),
+                      hintText: "Enter Pincode",
+                      errorText:errorstring6.isEmpty ? 'Pincode is required' : null,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                   onChanged: (value) {
+                          setState(() {
+                    errorstring7 = value;
+                          });
+                        },
+                  controller: business_description_controller,
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.description,color:Colors.blue),
+                      label: Text("Business Description"),
+                      hintText: "Enter Description",
+                       errorText:errorstring7.isEmpty ? 'Description is required' : null,
+                      
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        borderSide: BorderSide(color: Colors.blue.shade900),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+                ),
+              ),
+             
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

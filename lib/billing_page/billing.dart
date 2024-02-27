@@ -124,10 +124,14 @@ amount_totalamount:list_amount_totalamount,
 bal_balance:list_bal_balance
        )));
         }
-        if (customername_controller.text.isEmpty || phoneno_controller.text.isEmpty) {
+        if (customername_controller.text.isEmpty) {
           errorstring='';
+          
+        }
+        if (phoneno_controller.text.isEmpty) {
           errorstring2='';
         }
+        
         }
         );
 
