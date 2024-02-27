@@ -194,16 +194,27 @@ class _IdentitiesState extends State<Identities> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("Pending Payment:",style: TextStyle(
-                  fontWeight: FontWeight.bold
-                )),
-                    Icon(Icons.currency_rupee_rounded,color: Colors.black,
-                    
-                    ),
-                    Text(pendingpayment.toStringAsFixed(2),style: TextStyle(
+                    Column(
+                      children: [
+                        Text("Pending Payment:",style: TextStyle(
+                                          fontWeight: FontWeight.bold
+                                        )),
+                         Row(
+                      children: [
+                        Icon(Icons.currency_rupee_rounded,color: Colors.black,
+                        
+                        ),
+                        Text(pendingpayment.toStringAsFixed(2),style: TextStyle(
                         fontWeight: FontWeight.bold
                     ))
+                      ],
+                    ),               
+                      ],
+                    ),
+                    
+                    
                   ],
                 ),
               ),
@@ -374,12 +385,14 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                       children: [
                         Column(
                           children: [
+                            Text("Balance:"),
                             Row(
                               children: [
-                                Text("Balance:"),Icon(Icons.currency_rupee_rounded, size: 15),
+                                Icon(Icons.currency_rupee_rounded, size: 15),
+                                Text(widget.bal_balance[index]),
                               ],
                             ),
-                            Text(widget.bal_balance[index]),
+                            
                           ],
                         ),
                        
