@@ -5,7 +5,15 @@ import 'package:flutter/material.dart';
 
 
 class Details extends StatefulWidget {
-  const Details({super.key});
+  final String name_owner;
+  final String name_Business;
+  final String name_Phone_No;
+  final String name_Email;
+  final String name_Address;
+  final String name_Pincode;
+  final String name_Business_Description;
+  
+  const Details({super.key,required this.name_owner, required this.name_Business,required this.name_Phone_No,required this.name_Email,required this.name_Address,required this.name_Pincode,required this.name_Business_Description});
 
  
 
@@ -15,6 +23,7 @@ class Details extends StatefulWidget {
 
 
 class _DetailsState extends State<Details> {
+
   
   String Business_Name = "";
   String Owner_Name = "";
@@ -32,6 +41,22 @@ class _DetailsState extends State<Details> {
   TextEditingController business_description_controller =
       TextEditingController();
       int _selectedIndex = 0; 
+
+
+      @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    business_name_controller.text=widget.name_Business;
+    owner_name_controller.text=widget.name_owner;
+    phone_no_controller.text=widget.name_Phone_No;
+    email_controller.text=widget.name_Email;
+    address_controller.text=widget.name_Address;
+    pincode_controller.text=widget.name_Pincode;
+    business_description_controller.text=widget.name_Business_Description;
+
+    
+  }
       void _onItemTapped(int index) {
   setState(() {
     _selectedIndex = index;
@@ -74,6 +99,7 @@ void save_pass() {
                           MaterialPageRoute(
                             builder: (context) =>
                                 Identities(name_owner:Owner_Name, name_Business: Business_Name,
+      name_Phone_No: Phone_No, name_Email: Email, name_Address: Address, name_Pincode: Pincode, name_Business_Description: Business_Description,
       name_customername:[],
       no_phoneno:[],
       items_noofitems:[],

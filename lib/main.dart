@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, depend_on_referenced_packages, prefer_const_literals_to_create_immutables
+// ignore_for_file: unused_import, depend_on_referenced_packages, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
@@ -22,7 +22,16 @@ class MyApp extends StatelessWidget {
         
       ),
       debugShowCheckedModeBanner: false,
-      home:  Details(),
+      home:  Details(
+        name_owner: " ",
+        name_Business: " ",
+        name_Address: " ",
+        name_Business_Description:"",
+        name_Email: " ",
+        name_Phone_No:"",
+        name_Pincode: "",
+        
+      ),
     );
   }
 }

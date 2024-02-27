@@ -23,8 +23,15 @@ List add_list_name_customername;
   String name_Business;
   String customerid_cont;
   String phoneno_cont;
+  final String name_Phone_No;
+  final String name_Email;
+  final String name_Address;
+  final String name_Pincode;
+  final String name_Business_Description;
 
-  AddItems(this.add_items_list_itemname,this.add_items_list_itemquantity,this.add_items_list_itemprice,this.add_items_list_itemdiscount,this.add_items_list_itemnettotal,this.add_items_list_itemdiscountvaluecost,this.add_items_list_itemtotalamount,{super.key, required this.name_Business, required this.name_owner,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,required this.customerid_cont,required this.phoneno_cont});
+  AddItems(this.add_items_list_itemname,this.add_items_list_itemquantity,this.add_items_list_itemprice,this.add_items_list_itemdiscount,this.add_items_list_itemnettotal,this.add_items_list_itemdiscountvaluecost,this.add_items_list_itemtotalamount,{super.key, 
+    required this.name_Phone_No, required this.name_Email, required this.name_Address, required this.name_Pincode, required this.name_Business_Description
+  ,required this.name_Business, required this.name_owner,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,required this.customerid_cont,required this.phoneno_cont});
 
   @override
   State<AddItems> createState() => _AddItemsState();
@@ -136,6 +143,7 @@ void _onItemTapped(int index) {
           context,
           MaterialPageRoute(
               builder: (context) => Billing(
+
                   list_itemname,
                   list_itemquantity,
                   list_itemprice,
@@ -143,6 +151,12 @@ void _onItemTapped(int index) {
                   list_itemnettotal,
                   list_itemdiscountvaluecost,
                   list_itemtotalamount,name_owner: widget.name_owner,name_business: widget.name_Business,  
+                  name_Address: widget.name_Address,
+                  name_Phone_No: widget.name_Phone_No,
+                  name_Email: widget.name_Email,
+                  name_Pincode: widget.name_Pincode,
+                  name_Business_Description: widget.name_Business_Description,
+
                   add_list_amount_totalamount: widget.add_list_amount_totalamount,
                   
                   
@@ -154,7 +168,11 @@ void _onItemTapped(int index) {
                   
                   add_list_bal_balance: widget.add_list_bal_balance,
                   customerid_cont: widget.customerid_cont,
-                  phoneno_cont: widget.phoneno_cont
+                  phoneno_cont: widget.phoneno_cont,
+                  
+
+
+                  
 
                   
 
@@ -213,6 +231,12 @@ add_list_name_customername: widget.add_list_name_customername,
         add_list_bal_balance:     widget.add_list_bal_balance,
         name_owner: widget.name_owner,
         name_Business: widget.name_Business,
+        name_Address: widget.name_Address,
+        name_Phone_No: widget.name_Phone_No,
+        name_Email: widget.name_Email,
+        name_Pincode: widget.name_Pincode,
+        name_Business_Description: widget.name_Business_Description,
+        
         customerid_cont: widget.customerid_cont,
         phoneno_cont: widget.phoneno_cont,
 

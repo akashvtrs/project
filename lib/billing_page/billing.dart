@@ -24,6 +24,12 @@ class Billing extends StatefulWidget {
   final List itemtotalamount;
   final String name_owner;
   final String name_business;
+  final String name_Phone_No;
+  final String name_Email;
+  final String name_Address;
+  final String name_Pincode;
+  final String name_Business_Description;
+
  List add_list_name_customername=[];
  List add_list_no_phoneno=[];
  List add_list_items_noofitems=[];
@@ -42,7 +48,12 @@ class Billing extends StatefulWidget {
       this.itemnettotal,
       this.itemdiscountvaluecost,
       this.itemtotalamount,
-      {super.key, required this.name_business, required this.name_owner,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,required this.customerid_cont,required this.phoneno_cont});
+      {super.key,required this.name_Phone_No,
+      required this.name_Email,
+      required this.name_Address,
+      required this.name_Pincode,
+      required this.name_Business_Description,
+       required this.name_business, required this.name_owner,required this.add_list_name_customername,required this.add_list_no_phoneno,required this.add_list_items_noofitems,required this.add_list_amount_totalamount,required this.add_list_bal_balance,required this.customerid_cont,required this.phoneno_cont});
 
   @override
   State<Billing> createState() => _BillingState();
@@ -96,6 +107,12 @@ int _selectedIndex = 0;
        context,MaterialPageRoute(builder:(context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business,
         name_customername:list_name_customername,
 no_phoneno:list_no_phoneno,
+name_Address: widget.name_Address,
+name_Phone_No: widget.name_Phone_No,
+name_Email: widget.name_Email,
+name_Pincode: widget.name_Pincode,
+name_Business_Description: widget.name_Business_Description,
+
 
 items_noofitems:list_items_noofitems,
 amount_totalamount:list_amount_totalamount,
@@ -124,6 +141,11 @@ widget.itemdiscountvaluecost,
       add_list_bal_balance: list_bal_balance,
       name_owner: widget.name_owner,
       name_Business: widget.name_business,
+      name_Address: widget.name_Address,
+      name_Phone_No: widget.name_Phone_No,
+      name_Email: widget.name_Email,
+      name_Pincode: widget.name_Pincode,
+      name_Business_Description: widget.name_Business_Description,
       customerid_cont:customername_controller.text,
       phoneno_cont:phoneno_controller.text
       
@@ -146,6 +168,13 @@ void _onItemTapped(int index) {
     if (index == 0) {
        Navigator.push(
        context,MaterialPageRoute(builder:(context) => Identities(name_owner: widget.name_owner, name_Business: widget.name_business,
+       name_Address: widget.name_Address,
+       name_Phone_No: widget.name_Phone_No,
+       name_Email: widget.name_Email,
+       name_Pincode: widget.name_Pincode,
+       name_Business_Description: widget.name_Business_Description,
+
+       
         name_customername:list_name_customername,
 no_phoneno:list_no_phoneno,
 
@@ -345,6 +374,14 @@ widget.itemtotalamount.forEach((item) {
                     add_list_items_noofitems: list_items_noofitems,
                     add_list_amount_totalamount: list_amount_totalamount,
                     add_list_bal_balance: list_bal_balance,
+                    name_Business: widget.name_business,
+                    name_owner: widget.name_owner,
+                    name_Address: widget.name_Address,
+                    name_Phone_No: widget.name_Phone_No,
+                    name_Email: widget.name_Email,
+                    name_Pincode: widget.name_Pincode,
+                    name_Business_Description: widget.name_Business_Description,
+                    
 
                         ),
                   ],
@@ -564,6 +601,12 @@ widget.itemtotalamount.forEach((item) {
         add_list_items_noofitems: list_items_noofitems,
         add_list_amount_totalamount: list_amount_totalamount,
         add_list_bal_balance: list_bal_balance,
+        name_Address: widget.name_Address,
+        name_Business_Description: widget.name_Business_Description,
+        name_Email: widget.name_Email,
+        name_Phone_No: widget.name_Phone_No,
+        name_Pincode: widget.name_Pincode,
+      
 
         ),
       )

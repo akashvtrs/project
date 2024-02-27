@@ -16,8 +16,15 @@ class Identities extends StatefulWidget {
   final List items_noofitems;
   final List amount_totalamount;
   final List bal_balance;
+  final String name_Phone_No;
+  final String name_Email;
+  final String name_Address;
+  final String name_Pincode;
+  final String name_Business_Description;
+
   
-  const Identities({super.key,required this.name_owner, required this.name_Business,required this.name_customername,required this.no_phoneno,required this.items_noofitems,required this.amount_totalamount,required this.bal_balance});
+  
+  const Identities({super.key,required this.name_owner, required this.name_Business,required this.name_Phone_No,required this.name_Email,required this.name_Address,required this.name_Pincode,required this.name_Business_Description,required this.name_customername,required this.no_phoneno,required this.items_noofitems,required this.amount_totalamount,required this.bal_balance});
 
   @override
   State<Identities> createState() => _IdentitiesState();
@@ -58,10 +65,29 @@ class _IdentitiesState extends State<Identities> {
     return Scaffold(
       appBar: AppBar(
         
+       
           automaticallyImplyLeading: false,
         backgroundColor: Colors.blue.shade100,
         foregroundColor: Colors.blue.shade900,
-        leading:  Icon(Icons.home),
+        leading:  InkWell(
+          onTap: () {
+            Navigator.push(context, 
+            MaterialPageRoute(builder: (context) => Details(
+              name_owner: widget.name_owner,
+              name_Business: widget.name_Business,
+              name_Phone_No: widget.name_Phone_No,
+              name_Email: widget.name_Email ,
+              name_Address: widget.name_Address,
+              name_Pincode: widget.name_Pincode,
+              name_Business_Description: widget.name_Business_Description,
+
+
+
+            )),
+
+            );
+          },
+          child: Icon(Icons.home)),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -74,6 +100,7 @@ class _IdentitiesState extends State<Identities> {
             ),
           ],
         ),
+        
         
       ),
   body: Padding(
@@ -126,7 +153,10 @@ class _IdentitiesState extends State<Identities> {
         Visibility(
           visible: savedcustomers_bool,
           child: AppHomeScreen(
-            name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
+
+              
+              name_Phone_No: widget.name_Phone_No,name_Email: widget.name_Email,name_Address: widget.name_Address,name_Pincode: widget.name_Pincode,name_Business_Description: widget.name_Business_Description,
+            name_Business: widget.name_Business,name_owner: widget.name_owner,name_customername:widget.name_customername, no_phoneno:widget.no_phoneno, items_noofitems:widget.items_noofitems, amount_totalamount:widget.amount_totalamount, bal_balance:widget.bal_balance
           ),
         ),
         Column(
@@ -222,6 +252,13 @@ class _IdentitiesState extends State<Identities> {
               MaterialPageRoute(
                 builder: (context) => Billing(
                    [],[],[],[],[],[],[],name_owner:widget.name_owner,name_business:widget.name_Business,
+                  name_Business_Description: widget.name_Business_Description,
+                  name_Email: widget.name_Email,
+                  name_Phone_No: widget.name_Phone_No,
+                  name_Address: widget.name_Address,
+                  name_Pincode: widget.name_Pincode,
+                 
+
                     add_list_amount_totalamount: widget.amount_totalamount,
                   
                   
@@ -253,7 +290,15 @@ class AppHomeScreen extends StatefulWidget {
   final List items_noofitems;
   final List amount_totalamount;
   final List bal_balance;
-  const AppHomeScreen({super.key,required this.name_customername,required this.no_phoneno,required this.items_noofitems,required this.amount_totalamount,required this.bal_balance});
+  final String name_owner;
+  final String name_Business;
+  final String name_Business_Description;
+  final String name_Phone_No;
+  final String name_Email;
+  final String name_Address;
+  final String name_Pincode;
+
+  const AppHomeScreen({super.key,required this.name_Phone_No,required this.name_Email,required this.name_Address,required this.name_Pincode,required this.name_Business_Description,required this.name_owner, required this.name_Business,required this.name_customername,required this.no_phoneno,required this.items_noofitems,required this.amount_totalamount,required this.bal_balance});
 
   @override
   State<AppHomeScreen> createState() => _AppHomeScreenState();
@@ -341,8 +386,15 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                                       items_noofitems: widget.items_noofitems,
                                       amount_totalamount: widget.amount_totalamount,
                                       bal_balance: widget.bal_balance,
-                                      name_owner:"",
-                                      name_Business:""
+                                      name_owner:widget.name_owner,
+                                      name_Business:widget.name_Business,
+                                      name_Business_Description: widget.name_Business_Description,
+                                      name_Phone_No: widget.name_Phone_No,
+                                      name_Email: widget.name_Email,
+                                      name_Address: widget.name_Address,
+                                      name_Pincode: widget.name_Pincode,
+
+                                      
 
 
                                     )
