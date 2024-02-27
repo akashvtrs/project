@@ -41,6 +41,14 @@ class _DetailsState extends State<Details> {
   TextEditingController business_description_controller =
       TextEditingController();
       int _selectedIndex = 0; 
+     
+      String errorstring1 = 'notnull';
+      String errorstring2 = 'notnull';
+      String errorstring3 = 'notnull';
+      String errorstring4 = 'notnull';
+      String errorstring5 = 'notnull';
+       String errorstring6 = 'notnull';
+        String errorstring7 = 'notnull';
 
 
       @override
@@ -82,6 +90,8 @@ class _DetailsState extends State<Details> {
   });
 }
 void save_pass() {
+  setState(() {
+    
                       if (
                         business_name_controller.text.isNotEmpty && owner_name_controller.text.isNotEmpty 
             && phone_no_controller.text.isNotEmpty && email_controller.text.isNotEmpty && address_controller.text.isNotEmpty && pincode_controller.text.isNotEmpty
@@ -107,6 +117,19 @@ void save_pass() {
       bal_balance:[]),
                           ));
                       }
+                      if (business_name_controller.text.isEmpty || owner_name_controller.text.isEmpty 
+      || phone_no_controller.text.isEmpty || email_controller.text.isEmpty || address_controller.text.isEmpty || pincode_controller.text.isEmpty
+      || business_description_controller.text.isEmpty) {
+        errorstring1='';
+        errorstring2='';
+        errorstring3='';
+        errorstring4='';
+        errorstring5='';
+        errorstring6='';
+        errorstring7='';
+
+      }
+  });
                      
                     }
 
@@ -123,6 +146,18 @@ void save_pass() {
       Address = address_controller.text;
       Pincode = pincode_controller.text;
       Business_Description = business_description_controller.text;
+      }
+      if (business_name_controller.text.isEmpty || owner_name_controller.text.isEmpty 
+      || phone_no_controller.text.isEmpty || email_controller.text.isEmpty || address_controller.text.isEmpty || pincode_controller.text.isEmpty
+      || business_description_controller.text.isEmpty) {
+        errorstring1='';
+        errorstring2='';
+        errorstring3='';
+        errorstring4='';
+        errorstring5='';
+        errorstring6='';
+        errorstring7='';
+        
       }
       
     });
@@ -148,13 +183,13 @@ business_description_controller.text="";
 
     });
   }
-  String errorstring = '';
+  
  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+  
       appBar: AppBar(
         backgroundColor: Colors.blue.shade100,
         foregroundColor: Colors.blue.shade900,
@@ -177,7 +212,7 @@ business_description_controller.text="";
             TextField(
               onChanged: (value) {
     setState(() {
-      errorstring = value;
+      errorstring1 = value;
     });
   },
               controller: business_name_controller,
@@ -185,7 +220,7 @@ business_description_controller.text="";
                 suffixIcon: Icon(Icons.business_center,color:Colors.blue),
                   label: Text("Business Name"),
                   hintText: "Enter your Business Name",
-                   errorText:errorstring.isEmpty ? 'Business name is required' : null,
+                   errorText:errorstring1.isEmpty ? 'Business name is required' : null,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     borderSide: BorderSide(color: Colors.blue.shade900),
@@ -194,11 +229,17 @@ business_description_controller.text="";
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
+               onChanged: (value) {
+    setState(() {
+      errorstring2 = value;
+    });
+  },
               controller: owner_name_controller,
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.person,color:Colors.blue),
                   label: Text("Manager Name"),
                   hintText: "Enter Business Manager Name",
+                  errorText:errorstring2.isEmpty ? 'Manager Name is required' : null,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     borderSide: BorderSide(color: Colors.blue.shade900),
@@ -207,6 +248,11 @@ business_description_controller.text="";
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
+               onChanged: (value) {
+    setState(() {
+      errorstring3= value;
+    });
+  },
               controller: phone_no_controller,
                keyboardType: TextInputType.number,
                maxLength: 10,
@@ -214,7 +260,7 @@ business_description_controller.text="";
                   suffixIcon: Icon(Icons.phone,color:Colors.blue),
                   label: Text("Phone No"),
                   hintText: "Enter Phone No",
-                  
+                   errorText:errorstring3.isEmpty ? 'Phone No is required' : null,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     borderSide: BorderSide(color: Colors.blue.shade900),
@@ -223,11 +269,17 @@ business_description_controller.text="";
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
+                onChanged: (value) {
+    setState(() {
+      errorstring4 = value;
+    });
+  },
               controller: email_controller,
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.email,color:Colors.blue),
                   label: Text("Email"),
                   hintText: "ex.,abc@gmail.com",
+                    errorText:errorstring4.isEmpty ? 'Email is required' : null,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     borderSide: BorderSide(color: Colors.blue.shade900),
@@ -236,11 +288,17 @@ business_description_controller.text="";
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
+               onChanged: (value) {
+    setState(() {
+      errorstring5 = value;
+    });
+  },
               controller: address_controller,
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.location_on,color:Colors.blue),
                   label: Text("Address"),
                   hintText: "Enter Address",
+                  errorText:errorstring5.isEmpty ? 'Address is required' : null,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     borderSide: BorderSide(color: Colors.blue.shade900),
@@ -249,6 +307,11 @@ business_description_controller.text="";
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
+              onChanged: (value) {
+    setState(() {
+      errorstring6 = value;
+    });
+  },
               controller: pincode_controller,
                keyboardType: TextInputType.number,
                maxLength: 6,
@@ -256,6 +319,7 @@ business_description_controller.text="";
                   suffixIcon: Icon(Icons.pin,color:Colors.blue),
                   label: Text("Pincode"),
                   hintText: "Enter Pincode",
+                  errorText:errorstring6.isEmpty ? 'Pincode is required' : null,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     borderSide: BorderSide(color: Colors.blue.shade900),
@@ -264,11 +328,17 @@ business_description_controller.text="";
                       borderRadius: BorderRadius.all(Radius.circular(8.0)))),
             ),
             TextField(
+               onChanged: (value) {
+    setState(() {
+      errorstring7 = value;
+    });
+  },
               controller: business_description_controller,
               decoration: InputDecoration(
                   suffixIcon: Icon(Icons.description,color:Colors.blue),
                   label: Text("Business Description"),
                   hintText: "Enter Description",
+                   errorText:errorstring7.isEmpty ? 'Description is required' : null,
                   
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),

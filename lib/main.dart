@@ -4,6 +4,7 @@ import 'package:final_project1/billing_page/additems.dart';
 import 'package:final_project1/billing_page/billing.dart';
 import 'package:final_project1/business_profile/details.dart';
 import 'package:final_project1/home_screen/apphomescreen.dart';
+import 'package:final_project1/splash_screen/splashscreen_1.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,20 +20,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        
       ),
       debugShowCheckedModeBanner: false,
-      home:  Identities(name_owner: "", 
-      name_Business: "", name_Phone_No: "",
-       name_Email: "",
-        name_Address: "",
-         name_Pincode: "",
-          name_Business_Description:"",
-           name_customername: [],
-            no_phoneno: [], 
-            items_noofitems: [], 
-            amount_totalamount:[],
-             bal_balance: [])
+      home:  const SplashScreen1(),
     );
   }
 }

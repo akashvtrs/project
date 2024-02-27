@@ -43,7 +43,7 @@ class _AddItemsState extends State<AddItems> {
   TextEditingController price_controller = TextEditingController();
   TextEditingController discount_controllers = TextEditingController();
 
-  bool isVisible = true;
+  
   String nettotal = "0.00";
 
   String discountvaluecost = "0.00";
@@ -56,7 +56,7 @@ List list_itemnettotal = [];
 List list_itemdiscountvaluecost = [];
 List list_itemtotalamount = [];
 int _selectedIndex = 0; 
-String errorstring='';
+String errorstring='notnull';
 
   @override
   void initState() {
@@ -132,8 +132,8 @@ void _onItemTapped(int index) {
 }
   void saves() {
     setState(() {
-      isVisible = true;
-      list_itemname.add(itemname_controller.text);
+      if (itemname_controller.text.isNotEmpty ) {
+              list_itemname.add(itemname_controller.text);
     list_itemquantity.add(quantity_controller.text);
     list_itemprice.add(price_controller.text);
     list_itemdiscount.add(discount_controllers.text);
@@ -179,6 +179,12 @@ void _onItemTapped(int index) {
 
 
                   )));
+      }
+      
+     if (itemname_controller.text.isEmpty) {
+        errorstring='';
+     }
+
                   
     });
   }
@@ -202,7 +208,9 @@ void _onItemTapped(int index) {
  // }
 
   void addnew() {
-    list_itemname.add(itemname_controller.text);
+    setState(() {
+      if (itemname_controller.text.isNotEmpty ) {
+        list_itemname.add(itemname_controller.text);
     list_itemquantity.add(quantity_controller.text);
     list_itemprice.add(price_controller.text);
     list_itemdiscount.add(discount_controllers.text);
@@ -254,6 +262,12 @@ add_list_name_customername: widget.add_list_name_customername,
 
     });
 
+      }
+      if (itemname_controller.text.isEmpty) {
+        errorstring='';
+      }
+    });
+    
   }
 
   @override
@@ -278,10 +292,11 @@ add_list_name_customername: widget.add_list_name_customername,
                 errorstring = value;
               })},
               controller: itemname_controller,
+              maxLength: 16,
               decoration: InputDecoration(
                 labelText: "Item Name",
                 hintText: "ex.,Chocolate Cake",
-                errorText:errorstring.isEmpty ? 'Business name is required' : null,
+                errorText:errorstring.isEmpty ? 'Item Name is required' : null,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 ),
@@ -289,6 +304,7 @@ add_list_name_customername: widget.add_list_name_customername,
           TextField(
               onChanged: (value) => {save_item_details()},
               controller: quantity_controller,
+              
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: "No. of items",
