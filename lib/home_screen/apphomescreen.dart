@@ -281,6 +281,7 @@ class _AppHomeScreenState extends State<AppHomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Center(child: Text("No.${index+1}")),
                     Text("Customer Name: ${widget.name_customername[index]}"),
                     Text("Phone No: ${widget.no_phoneno[index]}"),
                     Text("Purchased No. of Items: ${widget.items_noofitems[index]}"),

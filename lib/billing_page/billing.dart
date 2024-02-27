@@ -410,7 +410,7 @@ widget.itemtotalamount.forEach((item) {
                     Icon(Icons.currency_rupee_rounded),
                   SizedBox(
                     
-                    width: 45,
+                    width: 100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -458,7 +458,7 @@ widget.itemtotalamount.forEach((item) {
                     ],
                   ),
                   SizedBox(
-                    width: 45,
+                    width: 100,
                     
                     child: TextField(
                       onChanged: (value) => {
@@ -491,10 +491,13 @@ widget.itemtotalamount.forEach((item) {
                     children: [
                     
                       
-                      Text(balance,style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
-                      )),
+                      SizedBox(
+                        width: 100,
+                        child: Text(balance,style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                        )),
+                      ),
                     ],
                   ),
                 ],
@@ -505,13 +508,19 @@ widget.itemtotalamount.forEach((item) {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor:Colors.black ,
+        unselectedItemColor:Colors.black ,
+        selectedIconTheme: IconThemeData(color: Colors.black),
+        unselectedIconTheme: IconThemeData(color: Colors.black),
+         unselectedFontSize: 14.0,
+        backgroundColor: Colors.blue.shade100,
         currentIndex: _selectedIndex, //New
   onTap:_onItemTapped, 
     items: const <BottomNavigationBarItem>[
       
       
       BottomNavigationBarItem(
-        icon: Icon(Icons.keyboard_arrow_left),
+        icon: Icon(Icons.arrow_back),
         label: 'Back',
         
       ),
@@ -522,7 +531,7 @@ widget.itemtotalamount.forEach((item) {
         
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.add),
+        icon: Icon(Icons.library_add),
         label: 'Save & New',
       ),
     ],

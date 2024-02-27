@@ -396,13 +396,19 @@ add_list_name_customername: widget.add_list_name_customername,
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.black,
+        selectedIconTheme: IconThemeData(color: Colors.red),
+        unselectedIconTheme: IconThemeData(color: Colors.black),
+         unselectedFontSize: 14.0,
+        backgroundColor: Colors.blue.shade100,
         currentIndex: _selectedIndex, //New
   onTap:_onItemTapped, 
     items: const <BottomNavigationBarItem>[
       
       
       BottomNavigationBarItem(
-        icon: Icon(Icons.keyboard_arrow_left),
+        icon: Icon(Icons.arrow_back),
         label: 'Back',
         
       ),
@@ -413,7 +419,7 @@ add_list_name_customername: widget.add_list_name_customername,
         
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.add),
+        icon: Icon(Icons.library_add),
         label: 'Save & New',
       ),
     ],

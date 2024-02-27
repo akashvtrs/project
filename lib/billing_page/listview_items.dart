@@ -165,44 +165,60 @@ class _ListItemsState extends State<ListItems> {
                                
                               ],
                             ),
-                            Visibility(
-                              visible: delete_visibility_value,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ElevatedButton(onPressed:(){
-                                    setState(() {
-                                      widget.itemname_l.remove(widget.itemname_l[index]);
-                                      widget.itemdiscount_l.remove(widget.itemdiscount_l[index]);
-                                      widget.itemquantity_l.remove(widget.itemquantity_l[index]);
-                                      widget.itemprice_l.remove(widget.itemprice_l[index]);
-                                      widget.itemnettotal_l.remove(widget.itemnettotal_l[index]);
-                                      widget.itemdiscountvaluecost_l.remove(widget.itemdiscountvaluecost_l[index]);
-                                      widget.itemtotalamount_l.remove(widget.itemtotalamount_l[index]);
-                                     Navigator.push(context, MaterialPageRoute(builder: (context)=> Billing(
-                      widget.itemname_l,
-                      widget.itemquantity_l,
-                      widget.itemprice_l,
-                      widget.itemdiscount_l,
-                      widget.itemnettotal_l,
-                      widget.itemdiscountvaluecost_l,
-                      widget.itemtotalamount_l,
-                      name_owner: "",
-                      name_business: "",
-                      add_list_name_customername:widget.add_list_name_customername,
-                      add_list_no_phoneno:widget.add_list_no_phoneno,
-                      add_list_items_noofitems:widget.add_list_items_noofitems,
-                      add_list_amount_totalamount:widget.add_list_amount_totalamount,
-                      add_list_bal_balance:widget.add_list_bal_balance,
-                      customerid_cont: "",
-                      phoneno_cont: "",
-
-                      )
-                      ));}
-                                    );
-                                  }, child: Text("delete")),
+                            Padding(
+                              padding: const EdgeInsets.only(top:4.0,bottom: 4.0),
+                              child: Visibility(
+                                visible: delete_visibility_value,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                      
+                                      style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue.shade100,
+                                 
+                                ),
+                                      onPressed:(){
+                                      setState(() {
+                                        widget.itemname_l.remove(widget.itemname_l[index]);
+                                        widget.itemdiscount_l.remove(widget.itemdiscount_l[index]);
+                                        widget.itemquantity_l.remove(widget.itemquantity_l[index]);
+                                        widget.itemprice_l.remove(widget.itemprice_l[index]);
+                                        widget.itemnettotal_l.remove(widget.itemnettotal_l[index]);
+                                        widget.itemdiscountvaluecost_l.remove(widget.itemdiscountvaluecost_l[index]);
+                                        widget.itemtotalamount_l.remove(widget.itemtotalamount_l[index]);
+                                       Navigator.push(context, MaterialPageRoute(builder: (context)=> Billing(
+                                                    widget.itemname_l,
+                                                    widget.itemquantity_l,
+                                                    widget.itemprice_l,
+                                                    widget.itemdiscount_l,
+                                                    widget.itemnettotal_l,
+                                                    widget.itemdiscountvaluecost_l,
+                                                    widget.itemtotalamount_l,
+                                                    name_owner: "",
+                                                    name_business: "",
+                                                    add_list_name_customername:widget.add_list_name_customername,
+                                                    add_list_no_phoneno:widget.add_list_no_phoneno,
+                                                    add_list_items_noofitems:widget.add_list_items_noofitems,
+                                                    add_list_amount_totalamount:widget.add_list_amount_totalamount,
+                                                    add_list_bal_balance:widget.add_list_bal_balance,
+                                                    customerid_cont: "",
+                                                    phoneno_cont: "",
                               
-                                ],
+                                                    )
+                                                    ));}
+                                      );
+                                    }, child: Row(
+                                      children: [
+                                        Icon(Icons.delete,color: Colors.red,
+                                      size: 15,
+                                    ),
+                                        Text("delete",style: TextStyle(color: Colors.red),),
+                                      ],
+                                    )),
+                                
+                                  ],
+                                ),
                               ),
                             ),
                           ],
